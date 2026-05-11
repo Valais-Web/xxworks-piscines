@@ -9,8 +9,44 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProduitsRouteImport } from './routes/produits'
+import { Route as EquipementsRouteImport } from './routes/equipements'
+import { Route as EntretienRouteImport } from './routes/entretien'
+import { Route as DepannageRouteImport } from './routes/depannage'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AutomatisationRouteImport } from './routes/automatisation'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ProduitsRoute = ProduitsRouteImport.update({
+  id: '/produits',
+  path: '/produits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EquipementsRoute = EquipementsRouteImport.update({
+  id: '/equipements',
+  path: '/equipements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EntretienRoute = EntretienRouteImport.update({
+  id: '/entretien',
+  path: '/entretien',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DepannageRoute = DepannageRouteImport.update({
+  id: '/depannage',
+  path: '/depannage',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutomatisationRoute = AutomatisationRouteImport.update({
+  id: '/automatisation',
+  path: '/automatisation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +55,116 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/automatisation': typeof AutomatisationRoute
+  '/contact': typeof ContactRoute
+  '/depannage': typeof DepannageRoute
+  '/entretien': typeof EntretienRoute
+  '/equipements': typeof EquipementsRoute
+  '/produits': typeof ProduitsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/automatisation': typeof AutomatisationRoute
+  '/contact': typeof ContactRoute
+  '/depannage': typeof DepannageRoute
+  '/entretien': typeof EntretienRoute
+  '/equipements': typeof EquipementsRoute
+  '/produits': typeof ProduitsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/automatisation': typeof AutomatisationRoute
+  '/contact': typeof ContactRoute
+  '/depannage': typeof DepannageRoute
+  '/entretien': typeof EntretienRoute
+  '/equipements': typeof EquipementsRoute
+  '/produits': typeof ProduitsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/automatisation'
+    | '/contact'
+    | '/depannage'
+    | '/entretien'
+    | '/equipements'
+    | '/produits'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/automatisation'
+    | '/contact'
+    | '/depannage'
+    | '/entretien'
+    | '/equipements'
+    | '/produits'
+  id:
+    | '__root__'
+    | '/'
+    | '/automatisation'
+    | '/contact'
+    | '/depannage'
+    | '/entretien'
+    | '/equipements'
+    | '/produits'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AutomatisationRoute: typeof AutomatisationRoute
+  ContactRoute: typeof ContactRoute
+  DepannageRoute: typeof DepannageRoute
+  EntretienRoute: typeof EntretienRoute
+  EquipementsRoute: typeof EquipementsRoute
+  ProduitsRoute: typeof ProduitsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/produits': {
+      id: '/produits'
+      path: '/produits'
+      fullPath: '/produits'
+      preLoaderRoute: typeof ProduitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/equipements': {
+      id: '/equipements'
+      path: '/equipements'
+      fullPath: '/equipements'
+      preLoaderRoute: typeof EquipementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/entretien': {
+      id: '/entretien'
+      path: '/entretien'
+      fullPath: '/entretien'
+      preLoaderRoute: typeof EntretienRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/depannage': {
+      id: '/depannage'
+      path: '/depannage'
+      fullPath: '/depannage'
+      preLoaderRoute: typeof DepannageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/automatisation': {
+      id: '/automatisation'
+      path: '/automatisation'
+      fullPath: '/automatisation'
+      preLoaderRoute: typeof AutomatisationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +177,23 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AutomatisationRoute: AutomatisationRoute,
+  ContactRoute: ContactRoute,
+  DepannageRoute: DepannageRoute,
+  EntretienRoute: EntretienRoute,
+  EquipementsRoute: EquipementsRoute,
+  ProduitsRoute: ProduitsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
