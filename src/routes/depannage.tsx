@@ -119,7 +119,7 @@ function Page() {
       <ContentSection>
         <div className="grid lg:grid-cols-5 gap-10 items-start">
           <div className="lg:col-span-2">
-            <span className="badge-eyebrow mb-4">Demande d'intervention</h2>
+            <span className="badge-eyebrow mb-4">Demande d'intervention</span>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight">Décrivez-nous votre panne</h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">Plus votre description est précise, plus notre intervention sera efficace dès la première visite.</p>
             <a href={SITE.phoneHref} className="mt-7 btn-primary"><Phone className="h-4 w-4" /> {SITE.phone}</a>
