@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, MessageCircle, MapPin, Phone, Mail, Waves } from "lucide-react";
+import { Facebook, Instagram, MessageCircle, MapPin, Phone, Mail } from "lucide-react";
 import { SERVICES, ZONES, SITE } from "@/lib/site-data";
+import logoMark from "@/assets/logo-mark.png";
 
 export function Footer() {
   return (
@@ -8,9 +9,9 @@ export function Footer() {
       <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: "radial-gradient(at 20% 0%, rgba(255,255,255,0.25) 0px, transparent 50%), radial-gradient(at 90% 100%, rgba(43,108,176,0.6) 0px, transparent 60%)" }} />
       <div className="container-prose relative py-16 grid gap-10 md:grid-cols-12">
         <div className="md:col-span-4">
-          <div className="flex items-center gap-2.5 mb-4">
-            <span className="h-10 w-10 rounded-xl grid place-items-center bg-white/15 backdrop-blur-sm border border-white/20">
-              <Waves className="h-5 w-5" />
+          <div className="flex items-center gap-3 mb-4">
+            <span className="h-12 w-12 rounded-xl grid place-items-center bg-white p-1.5 shadow-md">
+              <img src={logoMark} alt="Logo Xx Works Sàrl" className="h-full w-full object-contain" width={48} height={48} />
             </span>
             <div>
               <div className="text-base font-bold">Xx Works Sàrl</div>

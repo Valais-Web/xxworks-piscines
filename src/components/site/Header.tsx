@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, Phone, ChevronDown, Waves } from "lucide-react";
+import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { SERVICES, ZONES, SITE } from "@/lib/site-data";
+import logoMark from "@/assets/logo-mark.png";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -23,12 +24,10 @@ export function Header() {
       }`}
     >
       <div className="container-prose flex items-center justify-between py-3.5">
-        <Link to="/" className="flex items-center gap-2.5 leading-tight">
-          <span className="h-10 w-10 rounded-xl grid place-items-center text-white" style={{ backgroundImage: "var(--gradient-hero)" }}>
-            <Waves className="h-5 w-5" />
-          </span>
+        <Link to="/" className="flex items-center gap-3 leading-tight" aria-label="Xx Works Sàrl - Accueil">
+          <img src={logoMark} alt="Logo Xx Works Sàrl" className="h-11 w-11 object-contain" width={44} height={44} />
           <span className="flex flex-col">
-            <span className="text-[15px] font-bold tracking-tight">Xx Works <span className="text-muted-foreground font-normal">Sàrl</span></span>
+            <span className="text-[15px] font-bold tracking-tight text-primary">Xx Works <span className="text-muted-foreground font-normal">Sàrl</span></span>
             <span className="text-[10px] uppercase tracking-[0.18em] text-pool-deep font-semibold">{SITE.tagline}</span>
           </span>
         </Link>
