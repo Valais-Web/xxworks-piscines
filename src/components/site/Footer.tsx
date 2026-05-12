@@ -1,57 +1,68 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, MessageCircle, MapPin, Phone, Mail } from "lucide-react";
+import { Facebook, Instagram, MessageCircle, MapPin, Phone, Mail, Waves } from "lucide-react";
 import { SERVICES, ZONES, SITE } from "@/lib/site-data";
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground mt-16">
-      <div className="container-prose py-14 grid gap-10 md:grid-cols-4">
-        <div>
-          <div className="text-lg font-bold">Xx Works Sàrl</div>
-          <div className="text-xs uppercase tracking-widest opacity-80 mb-4">{SITE.tagline}</div>
-          <p className="text-sm opacity-90 leading-relaxed">
-            Pisciniste spécialisé en automatisation, entretien et dépannage en Suisse romande.
+    <footer className="relative text-white overflow-hidden" style={{ backgroundImage: "var(--gradient-hero)" }}>
+      <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: "radial-gradient(at 20% 0%, rgba(255,255,255,0.25) 0px, transparent 50%), radial-gradient(at 90% 100%, rgba(43,108,176,0.6) 0px, transparent 60%)" }} />
+      <div className="container-prose relative py-16 grid gap-10 md:grid-cols-12">
+        <div className="md:col-span-4">
+          <div className="flex items-center gap-2.5 mb-4">
+            <span className="h-10 w-10 rounded-xl grid place-items-center bg-white/15 backdrop-blur-sm border border-white/20">
+              <Waves className="h-5 w-5" />
+            </span>
+            <div>
+              <div className="text-base font-bold">Xx Works Sàrl</div>
+              <div className="text-[10px] uppercase tracking-[0.2em] opacity-80">{SITE.tagline}</div>
+            </div>
+          </div>
+          <p className="text-sm opacity-90 leading-relaxed max-w-sm">
+            Pisciniste indépendant spécialisé en automatisation, entretien et dépannage de piscines privées en Suisse romande.
           </p>
-          <address className="not-italic mt-4 text-sm opacity-90 space-y-1">
-            <div className="flex gap-2"><MapPin className="h-4 w-4 mt-0.5 shrink-0" /> {SITE.address}</div>
-            <div className="flex gap-2"><Phone className="h-4 w-4 mt-0.5 shrink-0" /> <a href={SITE.phoneHref} className="hover:underline">{SITE.phone}</a></div>
-            <div className="flex gap-2"><Mail className="h-4 w-4 mt-0.5 shrink-0" /> <a href={`mailto:${SITE.email}`} className="hover:underline">{SITE.email}</a></div>
+          <address className="not-italic mt-5 text-sm space-y-2">
+            <div className="flex gap-2.5"><MapPin className="h-4 w-4 mt-0.5 shrink-0 opacity-80" /> <span className="opacity-95">{SITE.address}</span></div>
+            <div className="flex gap-2.5"><Phone className="h-4 w-4 mt-0.5 shrink-0 opacity-80" /> <a href={SITE.phoneHref} className="hover:underline opacity-95">{SITE.phone}</a></div>
+            <div className="flex gap-2.5"><Mail className="h-4 w-4 mt-0.5 shrink-0 opacity-80" /> <a href={`mailto:${SITE.email}`} className="hover:underline opacity-95">{SITE.email}</a></div>
           </address>
         </div>
 
-        <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">Services</h3>
-          <ul className="space-y-2 text-sm opacity-90">
+        <div className="md:col-span-2">
+          <h3 className="text-xs font-bold uppercase tracking-widest mb-4 opacity-80">Services</h3>
+          <ul className="space-y-2.5 text-sm">
             {SERVICES.map((s) => (
-              <li key={s.slug}><Link to={`/${s.slug}` as string} className="hover:underline">{s.title}</Link></li>
+              <li key={s.slug}><Link to={`/${s.slug}` as string} className="opacity-90 hover:opacity-100 hover:underline transition-opacity">{s.title}</Link></li>
             ))}
           </ul>
         </div>
 
-        <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">Zones d'intervention</h3>
-          <ul className="space-y-2 text-sm opacity-90">
+        <div className="md:col-span-3">
+          <h3 className="text-xs font-bold uppercase tracking-widest mb-4 opacity-80">Zones d'intervention</h3>
+          <ul className="space-y-2.5 text-sm columns-2 gap-4">
             {ZONES.map((z) => (
-              <li key={z.slug}><Link to={`/zones/${z.slug}` as string} className="hover:underline">{z.name}</Link></li>
+              <li key={z.slug}><Link to={`/zones/${z.slug}` as string} className="opacity-90 hover:opacity-100 hover:underline transition-opacity">{z.name}</Link></li>
             ))}
           </ul>
         </div>
 
-        <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">Contact</h3>
-          <Link to="/contact" className="inline-block bg-background text-primary font-semibold rounded px-4 py-2 text-sm hover:bg-pool hover:text-pool-foreground transition-colors">Demander un devis</Link>
-          <div className="flex gap-3 mt-5">
-            <a href={SITE.social.facebook} aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="h-9 w-9 grid place-items-center rounded-full bg-white/10 hover:bg-white/20"><Facebook className="h-4 w-4" /></a>
-            <a href={SITE.social.instagram} aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="h-9 w-9 grid place-items-center rounded-full bg-white/10 hover:bg-white/20"><Instagram className="h-4 w-4" /></a>
-            <a href={SITE.social.whatsapp} aria-label="WhatsApp" target="_blank" rel="noopener noreferrer" className="h-9 w-9 grid place-items-center rounded-full bg-white/10 hover:bg-white/20"><MessageCircle className="h-4 w-4" /></a>
+        <div className="md:col-span-3">
+          <h3 className="text-xs font-bold uppercase tracking-widest mb-4 opacity-80">Restons en contact</h3>
+          <Link to="/contact" className="inline-flex items-center bg-white text-pool-deep font-semibold rounded-lg px-5 py-2.5 text-sm hover:bg-white/90 transition-colors shadow-lg">Demander un devis</Link>
+          <div className="flex gap-2.5 mt-5">
+            <a href={SITE.social.facebook} aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="h-10 w-10 grid place-items-center rounded-full bg-white/10 hover:bg-white/25 border border-white/15 transition-colors"><Facebook className="h-4 w-4" /></a>
+            <a href={SITE.social.instagram} aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="h-10 w-10 grid place-items-center rounded-full bg-white/10 hover:bg-white/25 border border-white/15 transition-colors"><Instagram className="h-4 w-4" /></a>
+            <a href={SITE.social.whatsapp} aria-label="WhatsApp" target="_blank" rel="noopener noreferrer" className="h-10 w-10 grid place-items-center rounded-full bg-white/10 hover:bg-white/25 border border-white/15 transition-colors"><MessageCircle className="h-4 w-4" /></a>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-white/10">
+      <div className="border-t border-white/10 relative">
         <div className="container-prose py-5 flex flex-wrap items-center justify-between gap-3 text-xs opacity-80">
           <div>© {new Date().getFullYear()} Xx Works Sàrl. Tous droits réservés.</div>
-          <Link to="/contact" className="hover:underline">Politique de confidentialité</Link>
+          <div className="flex gap-5">
+            <Link to="/contact" className="hover:underline">Mentions légales</Link>
+            <Link to="/contact" className="hover:underline">Politique de confidentialité</Link>
+          </div>
         </div>
       </div>
     </footer>
