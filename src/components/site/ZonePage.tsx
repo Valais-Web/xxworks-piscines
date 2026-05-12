@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { Cog, Droplets, Wrench, Zap, Sparkles, Award, ShieldCheck, HeartHandshake, MapPin, Clock, Check } from "lucide-react";
+import { Cog, Droplets, Wrench, Zap, Sparkles, Award, ShieldCheck, HeartHandshake, MapPin, Clock, Check, ArrowRight } from "lucide-react";
 import { SERVICES, SITE, type Zone } from "@/lib/site-data";
 import { PageHero, ContentSection } from "@/components/site/PageHero";
 import { SectionCta } from "@/components/site/SectionCta";
 import { FadeIn } from "@/components/site/FadeIn";
+import zonesImg from "@/assets/hero-zones.jpg";
 
 const serviceIcons: Record<string, React.ReactNode> = {
   automatisation: <Cog className="h-6 w-6" />,
@@ -21,39 +22,54 @@ export function ZonePage({ zone }: { zone: Zone }) {
         eyebrow={`Pisciniste · ${zone.name}`}
         title={`Pisciniste à ${zone.name} : services piscine clé en main`}
         subtitle={`Votre pisciniste de confiance à ${zone.name} et dans toute la région. Automatisation, entretien et dépannage par un professionnel diplômé.`}
-        image="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1600&q=80"
+        image={zonesImg}
       />
 
       <ContentSection>
         <div className="grid lg:grid-cols-3 gap-8">
           <FadeIn>
-            <h2 className="text-2xl font-semibold">Xx Works à {zone.name}</h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed">
-              Basés à Granges-de-Vesin, à {zone.distance.split(" depuis")[0]} de {zone.name}, nous intervenons régulièrement dans votre région pour les particuliers et les régies.
-            </p>
+            <div className="card-feature h-full">
+              <div className="icon-tile-primary mb-4"><MapPin className="h-5 w-5" /></div>
+              <h2 className="text-xl font-bold">Xx Works à {zone.name}</h2>
+              <p className="mt-3 text-[15px] text-muted-foreground leading-relaxed">
+                Basés à Granges-de-Vesin, à {zone.distance.split(" depuis")[0]} de {zone.name}, nous intervenons régulièrement dans votre région pour les particuliers et les régies.
+              </p>
+            </div>
           </FadeIn>
           <FadeIn>
-            <h3 className="text-lg font-semibold">Particularités locales</h3>
-            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{zone.particularite}</p>
+            <div className="card-feature h-full">
+              <div className="icon-tile mb-4"><Droplets className="h-5 w-5" /></div>
+              <h3 className="text-xl font-bold">Particularités locales</h3>
+              <p className="mt-3 text-[15px] text-muted-foreground leading-relaxed">{zone.particularite}</p>
+            </div>
           </FadeIn>
           <FadeIn>
-            <h3 className="text-lg font-semibold">Engagement local</h3>
-            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              Service réactif, conseils sur-mesure et suivi de proximité pour les habitants de {zone.name} et des communes environnantes.
-            </p>
+            <div className="card-feature h-full">
+              <div className="icon-tile-primary mb-4"><HeartHandshake className="h-5 w-5" /></div>
+              <h3 className="text-xl font-bold">Engagement local</h3>
+              <p className="mt-3 text-[15px] text-muted-foreground leading-relaxed">
+                Service réactif, conseils sur-mesure et suivi de proximité pour les habitants de {zone.name} et des communes environnantes.
+              </p>
+            </div>
           </FadeIn>
         </div>
       </ContentSection>
 
       <ContentSection alt>
-        <FadeIn><h2 className="text-3xl font-semibold">Nos services à {zone.name}</h2></FadeIn>
-        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <FadeIn className="text-center max-w-2xl mx-auto">
+          <span className="badge-eyebrow mb-4">Prestations locales</span>
+          <h2 className="text-3xl md:text-4xl font-bold">Nos services à {zone.name}</h2>
+        </FadeIn>
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {SERVICES.map((s) => (
             <FadeIn key={s.slug}>
-              <Link to={`/${s.slug}` as string} className="card-soft block h-full group">
-                <div className="h-12 w-12 rounded-lg bg-accent text-primary grid place-items-center mb-3">{serviceIcons[s.slug]}</div>
-                <h3 className="font-semibold group-hover:text-primary">{s.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{s.short}</p>
+              <Link to={`/${s.slug}` as string} className="card-feature block h-full group">
+                <div className="icon-tile mb-4">{serviceIcons[s.slug]}</div>
+                <h3 className="font-bold group-hover:text-pool-deep transition-colors">{s.title}</h3>
+                <p className="mt-2 text-[15px] text-muted-foreground leading-relaxed">{s.short}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-pool-deep">
+                  Découvrir <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                </span>
               </Link>
             </FadeIn>
           ))}
@@ -61,19 +77,29 @@ export function ZonePage({ zone }: { zone: Zone }) {
       </ContentSection>
 
       <ContentSection>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
           <FadeIn>
             <div className="card-soft h-full">
-              <div className="flex items-center gap-3"><Clock className="h-6 w-6 text-primary" /><h2 className="text-xl font-semibold">Délai d'intervention</h2></div>
-              <p className="mt-3 text-muted-foreground">{zone.delai}</p>
-              <p className="mt-2 text-sm text-muted-foreground">Distance : {zone.distance}.</p>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="icon-tile-primary"><Clock className="h-5 w-5" /></div>
+                <h2 className="text-xl font-bold">Délai d'intervention</h2>
+              </div>
+              <p className="text-[15px] text-muted-foreground leading-relaxed">{zone.delai}</p>
+              <p className="mt-3 text-sm text-muted-foreground">Distance : <strong className="text-foreground">{zone.distance}</strong>.</p>
             </div>
           </FadeIn>
           <FadeIn>
             <div className="card-soft h-full">
-              <div className="flex items-center gap-3"><MapPin className="h-6 w-6 text-primary" /><h2 className="text-xl font-semibold">Communes environnantes desservies</h2></div>
-              <ul className="mt-3 grid grid-cols-2 gap-y-1.5 text-sm text-muted-foreground">
-                {zone.communes.map((c) => (<li key={c} className="flex gap-2"><Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />{c}</li>))}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="icon-tile"><MapPin className="h-5 w-5" /></div>
+                <h2 className="text-xl font-bold">Communes environnantes desservies</h2>
+              </div>
+              <ul className="grid grid-cols-2 gap-y-2 text-sm">
+                {zone.communes.map((c) => (
+                  <li key={c} className="flex gap-2 items-center">
+                    <Check className="h-4 w-4 text-pool-deep shrink-0" />{c}
+                  </li>
+                ))}
               </ul>
             </div>
           </FadeIn>
@@ -81,25 +107,31 @@ export function ZonePage({ zone }: { zone: Zone }) {
       </ContentSection>
 
       <ContentSection alt>
-        <FadeIn><h2 className="text-3xl font-semibold text-center">{zone.name} sur la carte</h2></FadeIn>
-        <div className="mt-8 rounded-lg overflow-hidden border shadow-card aspect-[16/8]">
+        <FadeIn className="text-center max-w-2xl mx-auto">
+          <span className="badge-eyebrow mb-4">Localisation</span>
+          <h2 className="text-3xl md:text-4xl font-bold">{zone.name} sur la carte</h2>
+        </FadeIn>
+        <div className="mt-10 rounded-2xl overflow-hidden border shadow-[0_20px_60px_-20px_rgba(0,0,0,0.2)] aspect-[16/8]">
           <iframe title={`Carte ${zone.name}`} src={mapsSrc} className="w-full h-full" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
         </div>
       </ContentSection>
 
       <ContentSection>
-        <FadeIn><h2 className="text-3xl font-semibold text-center">Pourquoi choisir Xx Works</h2></FadeIn>
-        <div className="mt-10 grid md:grid-cols-3 gap-6">
+        <FadeIn className="text-center max-w-2xl mx-auto">
+          <span className="badge-eyebrow mb-4">Pourquoi nous</span>
+          <h2 className="text-3xl md:text-4xl font-bold">Pourquoi choisir Xx Works</h2>
+        </FadeIn>
+        <div className="mt-12 grid md:grid-cols-3 gap-6">
           {[
-            { i: <Award className="h-7 w-7 text-primary" />, t: "Expertise technique", d: "Maîtrise complète de la technique piscine moderne." },
-            { i: <ShieldCheck className="h-7 w-7 text-primary" />, t: "Brevet fédéral", d: "Certification reconnue, gage de sérieux et de compétence." },
-            { i: <HeartHandshake className="h-7 w-7 text-primary" />, t: "Service personnalisé", d: "Une approche sur-mesure adaptée à chaque client." },
+            { i: <Award className="h-5 w-5" />, t: "Expertise technique", d: "Maîtrise complète de la technique piscine moderne, hydraulique et chimique." },
+            { i: <ShieldCheck className="h-5 w-5" />, t: "Brevet fédéral", d: "Certification reconnue, gage de sérieux, de compétence et de formation continue." },
+            { i: <HeartHandshake className="h-5 w-5" />, t: "Service personnalisé", d: "Une approche sur-mesure adaptée à chaque client et à chaque installation." },
           ].map((b) => (
             <FadeIn key={b.t}>
-              <div className="card-soft h-full">
-                <div className="h-12 w-12 rounded-lg bg-accent grid place-items-center mb-3">{b.i}</div>
-                <h3 className="font-semibold">{b.t}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{b.d}</p>
+              <div className="card-feature h-full">
+                <div className="icon-tile-primary mb-4">{b.i}</div>
+                <h3 className="font-bold">{b.t}</h3>
+                <p className="mt-2 text-[15px] text-muted-foreground leading-relaxed">{b.d}</p>
               </div>
             </FadeIn>
           ))}
@@ -111,7 +143,6 @@ export function ZonePage({ zone }: { zone: Zone }) {
   );
 }
 
-// Approximate bounding box per city for OSM embed (lng_min,lat_min,lng_max,lat_max)
 function osmBbox(name: string): string {
   const map: Record<string, string> = {
     "Estavayer-le-Lac": "6.82,46.83,6.92,46.88",

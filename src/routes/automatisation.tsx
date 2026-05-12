@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Cpu, Droplets, Cloud, Home, Check } from "lucide-react";
+import { Cpu, Droplets, Cloud, Home, Check, Smartphone, Zap, TrendingDown, Shield } from "lucide-react";
 import { buildSeo, canonical, SITE } from "@/lib/site-data";
 import { PageHero, ContentSection } from "@/components/site/PageHero";
 import { SectionCta } from "@/components/site/SectionCta";
 import { FadeIn } from "@/components/site/FadeIn";
+import heroImg from "@/assets/service-automatisation.jpg";
 
 const TITLE = "Automatisation piscine en Suisse romande | Smart pool, domotique";
-const DESC = "Automatisez votre piscine : régulation pH/chlore, contre-lavage, suivi à distance. Économisez du temps, des produits et de l'eau. Devis gratuit.";
+const DESC = "Automatisez votre piscine : régulation pH/chlore, contre-lavage, suivi à distance. Économisez du temps, des produits et de l'eau. Devis gratuit en Suisse romande.";
 const PATH = "/automatisation";
 
 export const Route = createFileRoute("/automatisation")({
@@ -26,10 +27,19 @@ export const Route = createFileRoute("/automatisation")({
 });
 
 const features = [
-  { icon: <Droplets className="h-6 w-6" />, t: "Régulation automatique pH/chlore", d: "Maintien permanent d'une eau parfaitement équilibrée et désinfectée." },
-  { icon: <Cpu className="h-6 w-6" />, t: "Contre-lavage automatique", d: "Filtration entretenue automatiquement, sans manipulation." },
-  { icon: <Cloud className="h-6 w-6" />, t: "Suivi à distance", d: "Pilotez et surveillez votre installation depuis votre smartphone." },
-  { icon: <Home className="h-6 w-6" />, t: "Domotique intégrée", d: "Intégration avec votre maison connectée pour un confort total." },
+  { icon: <Droplets className="h-6 w-6" />, t: "Régulation pH & chlore", d: "Sondes professionnelles et pompes doseuses pilotées en continu pour une eau toujours équilibrée." },
+  { icon: <Cpu className="h-6 w-6" />, t: "Contre-lavage automatique", d: "Vannes Besgo et programmation intelligente : la filtration se nettoie sans intervention." },
+  { icon: <Cloud className="h-6 w-6" />, t: "Suivi à distance", d: "Tableau de bord temps réel sur votre smartphone, alertes en cas d'anomalie." },
+  { icon: <Home className="h-6 w-6" />, t: "Domotique intégrée", d: "Intégration avec votre maison connectée (KNX, scénarios) pour un confort total." },
+  { icon: <Zap className="h-6 w-6" />, t: "Pompe à vitesse variable", d: "Adaptation automatique du débit, jusqu'à 70% d'économie d'énergie." },
+  { icon: <Shield className="h-6 w-6" />, t: "Sécurité enfant", d: "Pilotage du volet de sécurité, alarmes et notifications en temps réel." },
+];
+
+const benefits = [
+  { i: <TrendingDown />, t: "−40% de produits", d: "Dosage précis, pas de gaspillage." },
+  { i: <TrendingDown />, t: "−70% d'électricité", d: "Pompes à vitesse variable optimisées." },
+  { i: <Smartphone />, t: "Pilotage 24/7", d: "Surveillance et contrôle à distance." },
+  { i: <Shield />, t: "Eau toujours saine", d: "Régulation continue, jamais de mauvaise surprise." },
 ];
 
 function Page() {
@@ -38,28 +48,49 @@ function Page() {
       <PageHero
         eyebrow="Automatisation"
         title="Automatisation piscine : libérez-vous de l'entretien manuel"
-        subtitle="Une piscine intelligente qui s'entretient seule. Économies de temps, de produits chimiques et d'énergie."
-        image="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1600&q=80"
+        subtitle="Une piscine intelligente qui s'entretient seule. Économies de temps, de produits chimiques et d'énergie, le tout piloté depuis votre smartphone."
+        image={heroImg}
       />
 
       <ContentSection>
-        <FadeIn>
-          <h2 className="text-3xl font-semibold">Le constat</h2>
-          <p className="mt-4 text-muted-foreground max-w-3xl leading-relaxed">
-            L'entretien manuel d'une piscine demande entre 2 et 5 heures de travail par semaine : tests d'eau, ajustement chimique, contre-lavage du filtre, contrôle des paramètres. Ces tâches répétitives, souvent négligées, dégradent rapidement la qualité de l'eau et l'état des équipements.
-          </p>
-        </FadeIn>
+        <div className="grid lg:grid-cols-2 gap-14 items-center">
+          <FadeIn>
+            <span className="badge-eyebrow mb-4">Le constat</span>
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight">Pourquoi automatiser sa piscine ?</h2>
+            <p className="mt-5 text-muted-foreground leading-relaxed">
+              L'entretien manuel d'une piscine demande entre <strong>2 et 5 heures de travail par semaine</strong> : tests d'eau, ajustement chimique, contre-lavage du filtre, contrôle des paramètres. Ces tâches répétitives, souvent négligées, dégradent rapidement la qualité de l'eau et l'état des équipements.
+            </p>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              L'automatisation moderne change radicalement la donne : votre piscine devient un système intelligent qui mesure, dose, filtre et alerte sans intervention humaine. Vous reprenez le contrôle de votre temps libre.
+            </p>
+          </FadeIn>
+          <FadeIn>
+            <div className="grid grid-cols-2 gap-4">
+              {benefits.map((b) => (
+                <div key={b.t} className="card-soft text-center">
+                  <div className="icon-tile mx-auto mb-3">{b.i}</div>
+                  <div className="font-bold text-sm">{b.t}</div>
+                  <div className="text-xs text-muted-foreground mt-1">{b.d}</div>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
       </ContentSection>
 
       <ContentSection alt>
-        <FadeIn><h2 className="text-3xl font-semibold">Notre solution Smart Pool</h2></FadeIn>
-        <div className="mt-10 grid sm:grid-cols-2 gap-6">
+        <FadeIn className="text-center max-w-2xl mx-auto">
+          <span className="badge-eyebrow mb-4">Smart Pool by Xx Works</span>
+          <h2 className="text-3xl md:text-4xl font-bold">Notre solution complète</h2>
+          <p className="mt-4 text-muted-foreground">Six briques technologiques qui s'intègrent à toute installation existante ou neuve.</p>
+        </FadeIn>
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((f) => (
             <FadeIn key={f.t}>
-              <div className="card-soft h-full">
-                <div className="h-12 w-12 rounded-lg bg-accent text-primary grid place-items-center mb-3">{f.icon}</div>
-                <h3 className="font-semibold text-lg">{f.t}</h3>
-                <p className="mt-2 text-muted-foreground text-sm">{f.d}</p>
+              <div className="card-feature h-full">
+                <div className="icon-tile-primary mb-4">{f.icon}</div>
+                <h3 className="font-bold text-lg">{f.t}</h3>
+                <p className="mt-2 text-muted-foreground text-[15px] leading-relaxed">{f.d}</p>
               </div>
             </FadeIn>
           ))}
@@ -68,10 +99,11 @@ function Page() {
 
       <ContentSection>
         <FadeIn>
-          <h2 className="text-3xl font-semibold">Marques partenaires</h2>
-          <p className="mt-4 text-muted-foreground max-w-3xl">Nous travaillons exclusivement avec des marques reconnues pour leur fiabilité et leurs performances.</p>
+          <span className="badge-eyebrow mb-4">Marques partenaires</span>
+          <h2 className="text-3xl md:text-4xl font-bold">Une sélection rigoureuse de marques professionnelles</h2>
+          <p className="mt-4 text-muted-foreground max-w-3xl">Nous travaillons exclusivement avec des marques reconnues en technique piscine pour leur fiabilité, leurs performances et leur durabilité.</p>
         </FadeIn>
-        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {[
             { n: "Bayrol Poolmanager", d: "Pilotage centralisé pH/Rx" },
             { n: "Dryden Aqua SPACE", d: "Filtration nouvelle génération" },
@@ -80,7 +112,7 @@ function Page() {
             { n: "OSF", d: "Régulation et électronique" },
           ].map((b) => (
             <div key={b.n} className="card-soft text-center">
-              <div className="font-semibold">{b.n}</div>
+              <div className="font-bold">{b.n}</div>
               <div className="text-xs text-muted-foreground mt-1">{b.d}</div>
             </div>
           ))}
@@ -89,28 +121,41 @@ function Page() {
 
       <ContentSection alt>
         <FadeIn>
-          <div className="bg-primary text-primary-foreground rounded-lg p-8 md:p-12">
-            <h2 className="text-2xl md:text-3xl font-semibold">Retour sur investissement</h2>
-            <p className="mt-3 opacity-95 max-w-3xl">
-              Une pompe à vitesse variable, par exemple, se rentabilise en moyenne en <strong>2 ans</strong> grâce aux économies d'électricité réalisées. Ajoutez-y la diminution de la consommation de produits chimiques et la réduction des appels au technicien : l'automatisation est un investissement rentable.
-            </p>
+          <div className="rounded-2xl p-8 md:p-12 text-white relative overflow-hidden" style={{ backgroundImage: "var(--gradient-hero)" }}>
+            <div className="absolute inset-0 opacity-30 pointer-events-none" style={{ backgroundImage: "radial-gradient(at 80% 20%, rgba(255,255,255,0.25), transparent 50%)" }} />
+            <div className="relative grid md:grid-cols-3 gap-8 items-center">
+              <div className="md:col-span-2">
+                <span className="badge-eyebrow-light mb-4">Retour sur investissement</span>
+                <h2 className="text-2xl md:text-3xl font-bold">Un investissement rapidement rentabilisé</h2>
+                <p className="mt-3 opacity-95">
+                  Une pompe à vitesse variable se rentabilise en moyenne en <strong>2 ans</strong> grâce aux économies d'électricité. Ajoutez la diminution de la consommation de produits chimiques, la réduction des appels au technicien et l'allongement de la durée de vie des équipements : l'automatisation devient l'un des meilleurs investissements pour votre piscine.
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="text-6xl font-bold">2 ans</div>
+                <div className="text-sm opacity-90 mt-1">Retour sur investissement moyen</div>
+              </div>
+            </div>
           </div>
         </FadeIn>
       </ContentSection>
 
       <ContentSection>
-        <FadeIn><h2 className="text-3xl font-semibold">Cas d'usage</h2></FadeIn>
-        <div className="mt-8 grid md:grid-cols-3 gap-6">
+        <FadeIn className="text-center max-w-2xl mx-auto">
+          <span className="badge-eyebrow mb-4">Cas d'usage</span>
+          <h2 className="text-3xl md:text-4xl font-bold">L'automatisation au quotidien</h2>
+        </FadeIn>
+        <div className="mt-12 grid md:grid-cols-3 gap-6">
           {[
             { t: "En vacances", d: "Votre piscine continue de tourner parfaitement, sans intervention. Vous recevez une alerte si quelque chose cloche." },
             { t: "Au quotidien", d: "Plus besoin de doser, tester ou contre-laver manuellement. La piscine s'entretient pendant que vous vivez votre vie." },
-            { t: "En cas de panne", d: "Le système vous alerte immédiatement. Nous pouvons souvent diagnostiquer à distance." },
+            { t: "En cas de panne", d: "Le système vous alerte immédiatement. Nous pouvons souvent diagnostiquer et résoudre à distance." },
           ].map((c) => (
             <FadeIn key={c.t}>
-              <div className="card-soft h-full">
-                <Check className="h-5 w-5 text-primary mb-3" />
-                <h3 className="font-semibold">{c.t}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{c.d}</p>
+              <div className="card-feature h-full">
+                <Check className="h-5 w-5 text-pool-deep mb-3" />
+                <h3 className="font-bold">{c.t}</h3>
+                <p className="mt-2 text-[15px] text-muted-foreground leading-relaxed">{c.d}</p>
               </div>
             </FadeIn>
           ))}

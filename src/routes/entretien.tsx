@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Check } from "lucide-react";
+import { Check, Calendar, Sun, Snowflake, FlaskConical, Sparkles, ClipboardList } from "lucide-react";
 import { buildSeo, canonical, SITE } from "@/lib/site-data";
 import { PageHero, ContentSection } from "@/components/site/PageHero";
 import { SectionCta } from "@/components/site/SectionCta";
 import { FadeIn } from "@/components/site/FadeIn";
+import heroImg from "@/assets/service-entretien.jpg";
 
 const TITLE = "Entretien piscine en Suisse romande | Suivi annuel, mise en service, hivernage";
-const DESC = "Mise en service printemps, suivi saisonnier, mise en hivernage. Service d'entretien piscine à la carte et personnalisable. Estavayer, Payerne, Yverdon.";
+const DESC = "Mise en service printemps, suivi saisonnier, mise en hivernage. Service d'entretien piscine à la carte en Suisse romande. Estavayer, Payerne, Yverdon, Fribourg.";
 const PATH = "/entretien";
 
 export const Route = createFileRoute("/entretien")({
@@ -18,15 +19,14 @@ export const Route = createFileRoute("/entretien")({
   component: Page,
 });
 
-const services = [
-  ["Mise en service printemps", true],
-  ["Suivi hebdomadaire", true],
-  ["Suivi bi-mensuel", true],
-  ["Suivi mensuel", true],
-  ["Interventions ponctuelles", true],
-  ["Hivernage actif", true],
-  ["Hivernage passif", true],
-] as const;
+const formules = [
+  { i: <Sun className="h-5 w-5" />, t: "Mise en service", d: "Démarrage complet au printemps : contrôle, paramétrage, équilibrage, remise en route." },
+  { i: <Calendar className="h-5 w-5" />, t: "Suivi hebdomadaire", d: "Visite chaque semaine pour les piscines très fréquentées ou exigeantes." },
+  { i: <Calendar className="h-5 w-5" />, t: "Suivi bi-mensuel", d: "Le bon compromis pour la majorité des piscines familiales." },
+  { i: <Calendar className="h-5 w-5" />, t: "Suivi mensuel", d: "Suivi léger pour piscines automatisées ou peu sollicitées." },
+  { i: <ClipboardList className="h-5 w-5" />, t: "Interventions ponctuelles", d: "Sur demande : nettoyage, analyse, conseil, intervention spécifique." },
+  { i: <Snowflake className="h-5 w-5" />, t: "Hivernage actif/passif", d: "Préparation pour l'hiver, sécurisation des équipements, redémarrage facile." },
+];
 
 function Page() {
   return (
@@ -34,47 +34,58 @@ function Page() {
       <PageHero
         eyebrow="Entretien"
         title="Entretien piscine : déléguez, profitez"
-        subtitle="Un programme d'entretien sur-mesure pour préserver durablement votre piscine et la qualité de l'eau."
-        image="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1600&q=80"
+        subtitle="Un programme d'entretien sur-mesure pour préserver durablement votre piscine, garantir une eau cristalline et prolonger la vie de vos équipements."
+        image={heroImg}
       />
 
       <ContentSection>
-        <FadeIn>
-          <h2 className="text-3xl font-semibold">Service à la carte</h2>
-          <p className="mt-4 text-muted-foreground max-w-3xl">
-            Chaque piscine est unique. Nous adaptons notre offre à votre installation, à votre rythme et à vos contraintes.
-          </p>
+        <FadeIn className="text-center max-w-2xl mx-auto">
+          <span className="badge-eyebrow mb-4">Service à la carte</span>
+          <h2 className="text-3xl md:text-4xl font-bold">Choisissez la formule qui vous convient</h2>
+          <p className="mt-4 text-muted-foreground">Chaque piscine est unique. Nous adaptons notre offre à votre installation, à votre rythme et à vos contraintes.</p>
         </FadeIn>
-        <div className="mt-8 overflow-hidden rounded-lg border bg-card">
-          <table className="w-full text-sm">
-            <tbody>
-              {services.map(([n]) => (
-                <tr key={n} className="border-b last:border-0">
-                  <td className="py-3 px-5 font-medium">{n}</td>
-                  <td className="py-3 px-5 text-right text-primary"><Check className="h-5 w-5 inline" /></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {formules.map((f) => (
+            <FadeIn key={f.t}>
+              <div className="card-feature h-full">
+                <div className="icon-tile-primary mb-4">{f.i}</div>
+                <h3 className="font-bold">{f.t}</h3>
+                <p className="mt-2 text-[15px] text-muted-foreground leading-relaxed">{f.d}</p>
+              </div>
+            </FadeIn>
+          ))}
         </div>
       </ContentSection>
 
       <ContentSection alt>
-        <div className="grid lg:grid-cols-2 gap-10">
+        <div className="grid lg:grid-cols-2 gap-12">
           <FadeIn>
-            <h2 className="text-2xl font-semibold">Mise en service au printemps</h2>
-            <ul className="mt-5 space-y-3">
-              {["Contrôle complet de l'installation", "Paramétrage des automatismes", "Nettoyage du bassin", "Équilibrage chimique de l'eau", "Remise en route et tests"].map((t) => (
-                <li key={t} className="flex gap-3"><Check className="h-5 w-5 text-primary mt-0.5 shrink-0" /><span>{t}</span></li>
+            <span className="badge-eyebrow mb-4"><Sun className="h-3.5 w-3.5" /> Printemps</span>
+            <h2 className="text-2xl md:text-3xl font-bold">Mise en service au printemps</h2>
+            <p className="mt-4 text-muted-foreground leading-relaxed">Une remise en route soignée garantit toute la saison sans accrocs. Notre intervention typique :</p>
+            <ul className="mt-6 space-y-3">
+              {["Contrôle complet de l'installation hydraulique et électrique", "Paramétrage et calibration des automatismes", "Nettoyage du bassin et des équipements internes", "Équilibrage chimique de l'eau (pH, TAC, désinfection)", "Remise en route et tests de bon fonctionnement", "Compte-rendu détaillé et conseils pour la saison"].map((t) => (
+                <li key={t} className="flex gap-3 items-start">
+                  <span className="h-5 w-5 rounded-full grid place-items-center mt-0.5 shrink-0" style={{ backgroundImage: "var(--gradient-water)" }}>
+                    <Check className="h-3 w-3 text-white" />
+                  </span>
+                  <span className="text-[15px]">{t}</span>
+                </li>
               ))}
             </ul>
           </FadeIn>
           <FadeIn>
-            <h2 className="text-2xl font-semibold">Suivi saisonnier</h2>
-            <p className="mt-5 text-muted-foreground">Selon la fréquence choisie (hebdomadaire, bi-mensuelle ou mensuelle), nous assurons :</p>
-            <ul className="mt-4 space-y-3">
-              {["Analyse de l'eau et ajustement", "Nettoyage skimmers, paniers, ligne d'eau", "Contre-lavage du filtre", "Vérification des équipements", "Compte-rendu d'intervention"].map((t) => (
-                <li key={t} className="flex gap-3"><Check className="h-5 w-5 text-primary mt-0.5 shrink-0" /><span>{t}</span></li>
+            <span className="badge-eyebrow mb-4"><FlaskConical className="h-3.5 w-3.5" /> Saison</span>
+            <h2 className="text-2xl md:text-3xl font-bold">Suivi saisonnier</h2>
+            <p className="mt-4 text-muted-foreground leading-relaxed">Selon la fréquence choisie, nous assurons à chaque visite :</p>
+            <ul className="mt-6 space-y-3">
+              {["Analyse complète de l'eau et ajustement chimique", "Nettoyage skimmers, paniers de pompe, ligne d'eau", "Contre-lavage du filtre et nettoyage du préfiltre", "Vérification des équipements et pression de filtration", "Test des automatismes et calibration des sondes", "Compte-rendu d'intervention envoyé par email"].map((t) => (
+                <li key={t} className="flex gap-3 items-start">
+                  <span className="h-5 w-5 rounded-full grid place-items-center mt-0.5 shrink-0" style={{ backgroundImage: "var(--gradient-water)" }}>
+                    <Check className="h-3 w-3 text-white" />
+                  </span>
+                  <span className="text-[15px]">{t}</span>
+                </li>
               ))}
             </ul>
           </FadeIn>
@@ -82,26 +93,42 @@ function Page() {
       </ContentSection>
 
       <ContentSection>
-        <FadeIn><h2 className="text-3xl font-semibold">Mise en hivernage</h2></FadeIn>
-        <div className="mt-8 grid md:grid-cols-2 gap-6">
-          <div className="card-soft">
-            <h3 className="font-semibold text-lg">Hivernage actif</h3>
-            <p className="mt-3 text-sm text-muted-foreground">La filtration tourne quelques heures par jour, par cycles courts. Idéal pour les piscines bien isolées et automatisées. Remise en route au printemps simplifiée.</p>
+        <FadeIn className="text-center max-w-2xl mx-auto">
+          <span className="badge-eyebrow mb-4"><Snowflake className="h-3.5 w-3.5" /> Hivernage</span>
+          <h2 className="text-3xl md:text-4xl font-bold">Préparer la piscine pour l'hiver</h2>
+          <p className="mt-4 text-muted-foreground">Deux approches selon votre installation et la rigueur de votre microclimat.</p>
+        </FadeIn>
+        <div className="mt-10 grid md:grid-cols-2 gap-6">
+          <div className="card-feature">
+            <div className="icon-tile mb-4"><Snowflake className="h-5 w-5" /></div>
+            <h3 className="font-bold text-lg">Hivernage actif</h3>
+            <p className="mt-3 text-[15px] text-muted-foreground leading-relaxed">La filtration tourne quelques heures par jour, par cycles courts. Idéal pour les piscines bien isolées et automatisées. Remise en route au printemps simplifiée, eau préservée.</p>
           </div>
-          <div className="card-soft">
-            <h3 className="font-semibold text-lg">Hivernage passif</h3>
-            <p className="mt-3 text-sm text-muted-foreground">Vidange partielle, purge complète des canalisations, mise hors service de la filtration. Recommandé pour les régions à fort gel ou les longues absences.</p>
+          <div className="card-feature">
+            <div className="icon-tile-primary mb-4"><Snowflake className="h-5 w-5" /></div>
+            <h3 className="font-bold text-lg">Hivernage passif</h3>
+            <p className="mt-3 text-[15px] text-muted-foreground leading-relaxed">Vidange partielle, purge complète des canalisations, mise hors service de la filtration. Recommandé pour les régions à fort gel ou les longues absences hivernales.</p>
           </div>
         </div>
       </ContentSection>
 
       <ContentSection alt>
-        <FadeIn>
-          <h2 className="text-3xl font-semibold">Suivi durant vos absences</h2>
-          <p className="mt-4 text-muted-foreground max-w-3xl">
-            Vacances ou résidence secondaire : nous prenons soin de votre installation pour que vous retrouviez votre piscine en parfait état, sans mauvaise surprise.
-          </p>
-        </FadeIn>
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          <FadeIn>
+            <span className="badge-eyebrow mb-4">Vacances et résidences secondaires</span>
+            <h2 className="text-3xl font-bold">Suivi durant vos absences</h2>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Vous partez en vacances ou possédez une résidence secondaire ? Nous prenons soin de votre installation pour que vous retrouviez votre piscine en parfait état, sans mauvaise surprise. Suivi de la qualité de l'eau, vérifications régulières, alertes en cas d'anomalie.
+            </p>
+          </FadeIn>
+          <FadeIn>
+            <div className="card-soft">
+              <Sparkles className="h-7 w-7 text-pool-deep" />
+              <h3 className="mt-4 font-bold text-lg">Bon à savoir</h3>
+              <p className="mt-2 text-[15px] text-muted-foreground leading-relaxed">Un contrat d'entretien annuel garantit un tarif préférentiel, une planification anticipée et une priorité en cas d'urgence pendant la saison.</p>
+            </div>
+          </FadeIn>
+        </div>
       </ContentSection>
 
       <SectionCta />
