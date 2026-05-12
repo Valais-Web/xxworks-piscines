@@ -11,19 +11,33 @@ export const Route = createFileRoute("/zones/morat")({
   head: () => ({
     meta: buildSeo({ title: TITLE, description: DESC, path: PATH }),
     links: canonical(PATH),
-    scripts: [{
-      type: "application/ld+json",
-      children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        name: SITE.name,
-        telephone: SITE.phone,
-        email: SITE.email,
-        url: `${SITE.url}${PATH}`,
-        address: { "@type": "PostalAddress", streetAddress: "Route du Couchon 37", addressLocality: "Granges-de-Vesin", postalCode: "1484", addressCountry: "CH" },
-        areaServed: { "@type": "City", name: ZONE.name },
-      }),
-    }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: SITE.name,
+          telephone: SITE.phone,
+          email: SITE.email,
+          url: `${SITE.url}${PATH}`,
+          address: { "@type": "PostalAddress", streetAddress: "Route du Couchon 37", addressLocality: "Granges-de-Vesin", postalCode: "1484", addressCountry: "CH" },
+          areaServed: { "@type": "City", name: ZONE.name },
+        }),
+      },
+      ...(ZONE.faq ? [{
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: ZONE.faq.map(({ q, a }) => ({
+            "@type": "Question",
+            name: q,
+            acceptedAnswer: { "@type": "Answer", text: a },
+          })),
+        }),
+      }] : []),
+    ],
   }),
   component: () => <ZonePage zone={ZONE} />,
 });

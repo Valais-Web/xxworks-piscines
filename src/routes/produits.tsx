@@ -4,17 +4,28 @@ import { buildSeo, canonical, SITE } from "@/lib/site-data";
 import { PageHero, ContentSection } from "@/components/site/PageHero";
 import { SectionCta } from "@/components/site/SectionCta";
 import { FadeIn } from "@/components/site/FadeIn";
+import { ServiceFAQ } from "@/components/site/ServiceFAQ";
 import heroImg from "@/assets/service-produits.jpg";
 
 const TITLE = "Produits d'entretien piscine professionnels | Xx Works";
 const DESC = "Produits de traitement piscine de qualité professionnelle : pH, chlore, brome, floculants, anti-calcaire. Conseil personnalisé pour votre bassin en Suisse romande.";
 const PATH = "/produits";
 
+const FAQ = [
+  { q: "Quelle est la différence entre le chlore lent et le chlore choc ?", a: "Le chlore lent (galets trichlorés) assure la désinfection continue de fond sur 3 à 7 jours. Le chlore choc (granulé non stabilisé, dichloro ou calcium hypochlorite) agit en quelques heures pour traiter une contamination, une eau verte ou une forte fréquentation. Les deux se complètent : l'un ne remplace pas l'autre." },
+  { q: "Mon pH monte constamment — pourquoi et que faire ?", a: "Un pH qui remonte rapidement signale généralement un TAC (alcalinité) trop élevé ou un dégazage important de CO2 (eau agitée, cascades). La solution n'est pas d'ajouter constamment du pH-minus mais d'abaisser le TAC entre 80 et 120 mg/l. Nous analysons le problème à la source et proposons la correction adaptée." },
+  { q: "Peut-on commander des produits sans passer par une visite ?", a: "Oui. Pour les clients avec qui nous travaillons déjà et dont nous connaissons l'installation, nous pouvons fournir les produits sur commande (livraison lors d'une prochaine visite ou remise en main propre). Pour les nouveaux clients, une première analyse de l'eau est fortement recommandée avant de définir le programme de traitement." },
+  { q: "Quelle quantité de produits prévoir pour toute la saison ?", a: "Pour une piscine familiale de 50 m³ avec désinfection au chlore, prévoyez environ 5–8 kg de chlore lent, 2–3 kg de chlore choc, 2–3 litres de pH-minus ou pH-plus selon votre eau locale, et 1 litre d'anti-algues de fond. Ces quantités varient selon la fréquentation, l'ensoleillement et l'automatisation. Nous vous donnons une estimation personnalisée lors de la première visite." },
+];
+
 export const Route = createFileRoute("/produits")({
   head: () => ({
     meta: buildSeo({ title: TITLE, description: DESC, path: PATH }),
     links: canonical(PATH),
-    scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Service", serviceType: "Produits d'entretien piscine", provider: { "@type": "LocalBusiness", name: SITE.name, telephone: SITE.phone }, areaServed: "Suisse romande" }) }],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Service", serviceType: "Produits d'entretien piscine", provider: { "@type": "LocalBusiness", name: SITE.name, telephone: SITE.phone }, areaServed: "Suisse romande" }) },
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) }) },
+    ],
   }),
   component: Page,
 });
@@ -98,6 +109,8 @@ function Page() {
           </p>
         </FadeIn>
       </ContentSection>
+
+      <ServiceFAQ items={FAQ} />
 
       <SectionCta />
     </>

@@ -208,7 +208,7 @@ function Index() {
             ].map((tm) => (
               <FadeIn key={tm.n}>
                 <div className="card-soft h-full">
-                  <Quote className="h-7 w-7 text-pool/40" />
+                  <Quote className="h-7 w-7 text-pool-deep/60" />
                   <p className="mt-3 text-[15px] leading-relaxed">{tm.t}</p>
                   <div className="mt-5 pt-4 border-t flex items-center justify-between">
                     <div>

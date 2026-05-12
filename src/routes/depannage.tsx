@@ -5,17 +5,29 @@ import { PageHero, ContentSection } from "@/components/site/PageHero";
 import { SectionCta } from "@/components/site/SectionCta";
 import { ContactForm } from "@/components/site/ContactForm";
 import { FadeIn } from "@/components/site/FadeIn";
+import { ServiceFAQ } from "@/components/site/ServiceFAQ";
 import heroImg from "@/assets/service-depannage.jpg";
 
 const TITLE = "Dépannage piscine en Suisse romande | Estavayer, Payerne, Yverdon";
 const DESC = "Dépannage piscine rapide : fuites, pompes, filtres, automatismes, chauffage. Intervention sur Estavayer, Payerne, Avenches, Morat, Yverdon, Neuchâtel, Fribourg.";
 const PATH = "/depannage";
 
+const FAQ = [
+  { q: "Comment savoir si ma pompe est vraiment en panne ou simplement mal réglée ?", a: "Les symptômes d'une pompe défaillante incluent : bruit anormal (roulement, cavitation), débit de filtration insuffisant, eau trouble en permanence, alarme thermique fréquente. Un simple problème de réglage (débit, horaire, pression) peut imiter ces symptômes. Nous diagnostiquons avec précision avant toute recommandation de remplacement." },
+  { q: "Quelle est votre politique de devis pour les dépannages ?", a: "Nous fournissons systématiquement un devis écrit avant toute réparation. Le diagnostic (visite) est facturé selon la complexité, déductible du devis de réparation si vous confirmez les travaux. Aucune surprise : vous validez les coûts avant que nous intervenions." },
+  { q: "Pouvez-vous faire une recherche de fuite invisible dans ma piscine ?", a: "Oui. Nous utilisons la méthode de contrôle par pression différentielle et des colorants de traçage pour localiser les fuites de canalisation ou de bassin. Une fuite de 1 cm/jour représente 1 000 litres perdus par semaine — détecter et réparer rapidement est très rentable." },
+  { q: "Ma piscine a l'eau verte après une semaine d'absence — que faire ?", a: "Ne lancez pas un choc chlore massif sans analyse préalable : si le pH est hors plage (> 7.8), le chlore sera inefficace et vous aggraverez le problème. Appelez-nous pour une analyse complète. Nous apportons les produits adaptés et réalisons le traitement choc dans les règles. Une eau verte se corrige en 24–72h avec le bon protocole." },
+  { q: "Intervenez-vous le week-end pour les dépannages urgents ?", a: "Les urgences avérées (fuite active, panne totale de filtration en haute saison) sont traitées 7j/7, y compris le samedi et le dimanche matin. Contactez-nous par téléphone au +41 78 258 53 58. Les dépannages non-urgents sont planifiés en semaine selon les disponibilités." },
+];
+
 export const Route = createFileRoute("/depannage")({
   head: () => ({
     meta: buildSeo({ title: TITLE, description: DESC, path: PATH }),
     links: canonical(PATH),
-    scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Service", serviceType: "Dépannage piscine", provider: { "@type": "LocalBusiness", name: SITE.name, telephone: SITE.phone }, areaServed: "Suisse romande" }) }],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Service", serviceType: "Dépannage piscine", provider: { "@type": "LocalBusiness", name: SITE.name, telephone: SITE.phone }, areaServed: "Suisse romande" }) },
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) }) },
+    ],
   }),
   component: Page,
 });
@@ -127,6 +139,8 @@ function Page() {
           <div className="lg:col-span-3"><ContactForm /></div>
         </div>
       </ContentSection>
+
+      <ServiceFAQ items={FAQ} />
 
       <SectionCta />
     </>

@@ -4,17 +4,29 @@ import { buildSeo, canonical, SITE } from "@/lib/site-data";
 import { PageHero, ContentSection } from "@/components/site/PageHero";
 import { SectionCta } from "@/components/site/SectionCta";
 import { FadeIn } from "@/components/site/FadeIn";
+import { ServiceFAQ } from "@/components/site/ServiceFAQ";
 import heroImg from "@/assets/service-entretien.jpg";
 
 const TITLE = "Entretien piscine en Suisse romande | Suivi annuel, mise en service, hivernage";
 const DESC = "Mise en service printemps, suivi saisonnier, mise en hivernage. Service d'entretien piscine à la carte en Suisse romande. Estavayer, Payerne, Yverdon, Fribourg.";
 const PATH = "/entretien";
 
+const FAQ = [
+  { q: "À quelle fréquence faut-il faire entretenir une piscine familiale ?", a: "Pour une piscine familiale de 40 à 70 m³ fréquentée 3 à 5 fois par semaine, un entretien bi-mensuel est le bon compromis. Une piscine très fréquentée ou soumise à forte chaleur peut nécessiter un suivi hebdomadaire en juillet-août. Une piscine automatisée peut se contenter d'un suivi mensuel." },
+  { q: "Que comprend une mise en service au printemps ?", a: "Notre mise en service comprend : contrôle complet de l'installation hydraulique et électrique, paramétrage des automatismes, nettoyage du bassin et des équipements internes, équilibrage chimique (pH, TAC, TH, désinfection), remise en route et tests de bon fonctionnement. Durée : 2 à 4 heures selon l'état. Compte-rendu transmis par email." },
+  { q: "Peut-on souscrire un contrat d'entretien en cours de saison ?", a: "Oui, il n'est pas nécessaire d'attendre le printemps. Nous prenons en charge les contrats à tout moment de la saison, après une première visite de diagnostic permettant d'évaluer l'état de l'installation et de l'eau." },
+  { q: "Quelle est la différence entre un hivernage actif et un hivernage passif ?", a: "L'hivernage actif maintient une filtration courte quotidienne (2–4h) durant l'hiver : l'eau reste en circulation, le traitement préventif est maintenu. Il convient aux installations bien isolées et automatisées. L'hivernage passif vide partiellement la piscine, purge les canalisations et arrête complètement la filtration : adapté aux hivers rigoureux ou aux longues absences." },
+  { q: "L'entretien inclut-il la fourniture des produits chimiques ?", a: "Les produits chimiques peuvent être fournis par Xx Works (gamme professionnelle) ou apportés par le client. Nous recommandons nos gammes professionnelles car leur concentration supérieure offre un meilleur rendement et une action plus homogène. Les produits grande surface sont souvent sous-dosés et peuvent créer des déséquilibres." },
+];
+
 export const Route = createFileRoute("/entretien")({
   head: () => ({
     meta: buildSeo({ title: TITLE, description: DESC, path: PATH }),
     links: canonical(PATH),
-    scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Service", serviceType: "Entretien piscine", provider: { "@type": "LocalBusiness", name: SITE.name, telephone: SITE.phone }, areaServed: "Suisse romande" }) }],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Service", serviceType: "Entretien piscine", provider: { "@type": "LocalBusiness", name: SITE.name, telephone: SITE.phone }, areaServed: "Suisse romande" }) },
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) }) },
+    ],
   }),
   component: Page,
 });
@@ -130,6 +142,8 @@ function Page() {
           </FadeIn>
         </div>
       </ContentSection>
+
+      <ServiceFAQ items={FAQ} />
 
       <SectionCta />
     </>

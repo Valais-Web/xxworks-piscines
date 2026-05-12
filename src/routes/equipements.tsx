@@ -4,6 +4,7 @@ import { buildSeo, canonical, SITE } from "@/lib/site-data";
 import { PageHero, ContentSection } from "@/components/site/PageHero";
 import { SectionCta } from "@/components/site/SectionCta";
 import { FadeIn } from "@/components/site/FadeIn";
+import { ServiceFAQ } from "@/components/site/ServiceFAQ";
 import heroImg from "@/assets/service-equipements.jpg";
 import equipImg from "@/assets/service-equipements.jpg";
 import autoImg from "@/assets/service-automatisation.jpg";
@@ -14,11 +15,22 @@ const TITLE = "Équipements piscine : pompes, filtres, PAC, couvertures | Xx Wor
 const DESC = "Vente et installation d'équipements piscine en Suisse romande : pompes à vitesse variable, filtres AFM, pompes à chaleur, couvertures, douches. Marques pro.";
 const PATH = "/equipements";
 
+const FAQ = [
+  { q: "Quelle est la durée de vie d'une pompe à vitesse variable ?", a: "Une pompe à vitesse variable de qualité professionnelle (Badu EcoM ou équivalent) dure généralement 8 à 12 ans avec une utilisation normale. Le roulement moteur est le principal composant d'usure : un bruit anormal après 6–8 ans est souvent le signe d'une usure à anticiper. Un entretien annuel prolonge significativement la durée de vie." },
+  { q: "Quelle pompe à chaleur choisir pour ma piscine ?", a: "Le dimensionnement d'une PAC dépend du volume du bassin, de l'exposition solaire, de la présence d'une couverture et de la température cible. Pour une piscine de 60 m³ sans couverture, une PAC de 12–15 kW est généralement nécessaire. Avec une couverture à barres ou un volet, on peut descendre à 8–10 kW. Nous réalisons un bilan thermique lors de la visite de chiffrage." },
+  { q: "Le filtre AFM est-il vraiment meilleur que le sable classique ?", a: "L'AFM (média filtrant à verre activé de Dryden Aqua) filtre les particules jusqu'à 1 µm contre 20–25 µm pour le sable. Il réduit de 20–40 % la consommation de désinfectant, ne biofilm pas et se régénère mieux au contre-lavage. Son coût supérieur est généralement rentabilisé en 2–3 saisons grâce aux économies sur les produits chimiques." },
+  { q: "Est-il obligatoire d'avoir un volet de sécurité en Suisse ?", a: "Depuis 2012, les piscines privées ne sont pas soumises à une obligation légale fédérale de couverture de sécurité en Suisse, contrairement à la France. Cependant, certaines communes ou compagnies d'assurance peuvent l'exiger. Une couverture à barres conforme ou un volet immergé sont fortement recommandés pour les familles avec enfants." },
+  { q: "Peut-on installer une douche extérieure en hiver ou uniquement en saison ?", a: "Une douche extérieure peut être installée en toute saison si elle est correctement mise hors gel (purge d'eau en fin de saison). Nous conseillons les modèles avec vanne de purge intégrée pour les régions exposées au gel. L'installation prend généralement 2 à 4 heures." },
+];
+
 export const Route = createFileRoute("/equipements")({
   head: () => ({
     meta: buildSeo({ title: TITLE, description: DESC, path: PATH }),
     links: canonical(PATH),
-    scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Service", serviceType: "Vente et installation d'équipements piscine", provider: { "@type": "LocalBusiness", name: SITE.name, telephone: SITE.phone }, areaServed: "Suisse romande" }) }],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Service", serviceType: "Vente et installation d'équipements piscine", provider: { "@type": "LocalBusiness", name: SITE.name, telephone: SITE.phone }, areaServed: "Suisse romande" }) },
+      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) }) },
+    ],
   }),
   component: Page,
 });
@@ -88,6 +100,8 @@ function Page() {
           </div>
         </ContentSection>
       ))}
+
+      <ServiceFAQ items={FAQ} />
 
       <SectionCta />
     </>
