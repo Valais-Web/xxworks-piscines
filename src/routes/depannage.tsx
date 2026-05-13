@@ -143,6 +143,8 @@ function Page() {
 
       <ServiceFAQ items={FAQ} />
 
+      <RelatedServices currentSlug="depannage" />
+
       <SectionCta />
     </>
   );
