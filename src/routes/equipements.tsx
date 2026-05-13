@@ -6,10 +6,10 @@ import { SectionCta } from "@/components/site/SectionCta";
 import { FadeIn } from "@/components/site/FadeIn";
 import { ServiceFAQ } from "@/components/site/ServiceFAQ";
 import heroImg from "@/assets/service-equipements.jpg";
-import equipImg from "@/assets/service-equipements.jpg";
+import equipImg from "@/assets/equip-filtration.jpg";
 import autoImg from "@/assets/service-automatisation.jpg";
 import waterImg from "@/assets/service-produits.jpg";
-import zonesImg from "@/assets/hero-zones.jpg";
+import zonesImg from "@/assets/equip-couverture.jpg";
 
 const TITLE = "Équipements piscine : pompes, filtres, PAC | Xx Works";
 const DESC = "Vente et installation d'équipements piscine en Suisse romande : pompes à vitesse variable, filtres AFM, pompes à chaleur, couvertures, douches.";
