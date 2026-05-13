@@ -11,8 +11,8 @@ import autoImg from "@/assets/service-automatisation.jpg";
 import waterImg from "@/assets/service-produits.jpg";
 import zonesImg from "@/assets/hero-zones.jpg";
 
-const TITLE = "Équipements piscine : pompes, filtres, PAC, couvertures | Xx Works";
-const DESC = "Vente et installation d'équipements piscine en Suisse romande : pompes à vitesse variable, filtres AFM, pompes à chaleur, couvertures, douches. Marques pro.";
+const TITLE = "Équipements piscine : pompes, filtres, PAC | Xx Works";
+const DESC = "Vente et installation d'équipements piscine en Suisse romande : pompes à vitesse variable, filtres AFM, pompes à chaleur, couvertures, douches.";
 const PATH = "/equipements";
 
 const FAQ = [
