@@ -7,8 +7,8 @@ import heroImg from "@/assets/hero-home.jpg";
 import teamImg from "@/assets/about-team.jpg";
 import waterImg from "@/assets/service-produits.jpg";
 
-const TITLE = "Pisciniste & technique piscine en Suisse romande | Xx Works";
-const DESC = "Spécialiste piscine, automatisation, entretien et dépannage à Estavayer, Payerne, Yverdon, Neuchâtel et Fribourg. 15 ans d'expérience, service clé en main.";
+const TITLE = "Pisciniste en Suisse romande | Xx Works Sàrl";
+const DESC = "Automatisation, entretien et dépannage de piscines en Suisse romande. 15 ans d'expérience, brevet fédéral. Devis gratuit sous 24h.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -80,20 +80,23 @@ function Index() {
 
       {/* 3 piliers */}
       <section className="section">
-        <div className="container-prose grid md:grid-cols-3 gap-6">
-          {[
-            { icon: <Award className="h-6 w-6" />, t: "Expertise certifiée", d: "Brevet fédéral en technique piscine et 15 ans de pratique sur des installations variées en Suisse romande." },
-            { icon: <HeartHandshake className="h-6 w-6" />, t: "Service personnalisé", d: "Structure indépendante : prestations à la carte, accompagnement direct et flexibilité maximale." },
-            { icon: <ShieldCheck className="h-6 w-6" />, t: "Suivi de A à Z", d: "De la conception au suivi annuel, un seul interlocuteur de confiance, des conseils transparents." },
-          ].map((b, i) => (
-            <FadeIn key={i}>
-              <div className="card-feature h-full">
-                <div className="icon-tile-primary mb-5">{b.icon}</div>
-                <h3 className="text-lg font-bold">{b.t}</h3>
-                <p className="mt-2.5 text-muted-foreground text-[15px] leading-relaxed">{b.d}</p>
-              </div>
-            </FadeIn>
-          ))}
+        <div className="container-prose">
+          <h2 className="sr-only">Pourquoi choisir Xx Works</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { icon: <Award className="h-6 w-6" />, t: "Expertise certifiée", d: "Brevet fédéral en technique piscine et 15 ans de pratique sur des installations variées en Suisse romande." },
+              { icon: <HeartHandshake className="h-6 w-6" />, t: "Service personnalisé", d: "Structure indépendante : prestations à la carte, accompagnement direct et flexibilité maximale." },
+              { icon: <ShieldCheck className="h-6 w-6" />, t: "Suivi de A à Z", d: "De la conception au suivi annuel, un seul interlocuteur de confiance, des conseils transparents." },
+            ].map((b, i) => (
+              <FadeIn key={i}>
+                <div className="card-feature h-full">
+                  <div className="icon-tile-primary mb-5">{b.icon}</div>
+                  <h3 className="text-lg font-bold">{b.t}</h3>
+                  <p className="mt-2.5 text-muted-foreground text-[15px] leading-relaxed">{b.d}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 

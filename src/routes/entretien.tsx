@@ -7,8 +7,8 @@ import { FadeIn } from "@/components/site/FadeIn";
 import { ServiceFAQ } from "@/components/site/ServiceFAQ";
 import heroImg from "@/assets/service-entretien.jpg";
 
-const TITLE = "Entretien piscine en Suisse romande | Suivi annuel, mise en service, hivernage";
-const DESC = "Mise en service printemps, suivi saisonnier, mise en hivernage. Service d'entretien piscine à la carte en Suisse romande. Estavayer, Payerne, Yverdon, Fribourg.";
+const TITLE = "Entretien piscine en Suisse romande | Xx Works";
+const DESC = "Mise en service printemps, suivi saisonnier et hivernage. Service d'entretien piscine à la carte en Suisse romande.";
 const PATH = "/entretien";
 
 const FAQ = [

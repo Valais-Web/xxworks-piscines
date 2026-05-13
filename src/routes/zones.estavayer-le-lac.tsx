@@ -4,7 +4,7 @@ import { ZonePage } from "@/components/site/ZonePage";
 
 const ZONE = ZONES.find((z) => z.slug === "estavayer-le-lac")!;
 const TITLE = `Pisciniste à ${ZONE.name} | Installation, entretien, dépannage piscine`;
-const DESC = `Pisciniste à ${ZONE.name} : automatisation, entretien, dépannage de piscine. Intervention à ${ZONE.name} et environs depuis Granges-de-Vesin. Devis gratuit.`;
+const DESC = `Pisciniste à ${ZONE.name} : automatisation, entretien et dépannage de piscine. Intervention rapide depuis Granges-de-Vesin. Devis gratuit.`;
 const PATH = "/zones/estavayer-le-lac";
 
 export const Route = createFileRoute("/zones/estavayer-le-lac")({

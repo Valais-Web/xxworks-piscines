@@ -11,8 +11,8 @@ import autoImg from "@/assets/service-automatisation.jpg";
 import waterImg from "@/assets/service-produits.jpg";
 import zonesImg from "@/assets/hero-zones.jpg";
 
-const TITLE = "Équipements piscine : pompes, filtres, PAC, couvertures | Xx Works";
-const DESC = "Vente et installation d'équipements piscine en Suisse romande : pompes à vitesse variable, filtres AFM, pompes à chaleur, couvertures, douches. Marques pro.";
+const TITLE = "Équipements piscine : pompes, filtres, PAC | Xx Works";
+const DESC = "Vente et installation d'équipements piscine en Suisse romande : pompes à vitesse variable, filtres AFM, pompes à chaleur, couvertures, douches.";
 const PATH = "/equipements";
 
 const FAQ = [
@@ -95,7 +95,7 @@ function Page() {
               </ul>
             </FadeIn>
             <FadeIn className={i % 2 === 1 ? "lg:order-1" : ""}>
-              <img src={b.img} alt={b.t} loading="lazy" className="rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.25)] w-full object-cover aspect-[4/3]" />
+              <img src={b.img} alt={`${b.t} de piscine — installation Xx Works`} loading="lazy" className="rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.25)] w-full object-cover aspect-[4/3]" />
             </FadeIn>
           </div>
         </ContentSection>
