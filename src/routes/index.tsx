@@ -7,8 +7,8 @@ import heroImg from "@/assets/hero-home.jpg";
 import teamImg from "@/assets/about-team.jpg";
 import waterImg from "@/assets/service-produits.jpg";
 
-const TITLE = "Pisciniste & technique piscine en Suisse romande | Xx Works";
-const DESC = "Spécialiste piscine, automatisation, entretien et dépannage à Estavayer, Payerne, Yverdon, Neuchâtel et Fribourg. 15 ans d'expérience, service clé en main.";
+const TITLE = "Pisciniste en Suisse romande | Xx Works Sàrl";
+const DESC = "Automatisation, entretien et dépannage de piscines en Suisse romande. 15 ans d'expérience, brevet fédéral. Devis gratuit sous 24h.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
