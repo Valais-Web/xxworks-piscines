@@ -6,6 +6,7 @@ import { SectionCta } from "@/components/site/SectionCta";
 import { ContactForm } from "@/components/site/ContactForm";
 import { FadeIn } from "@/components/site/FadeIn";
 import { ServiceFAQ } from "@/components/site/ServiceFAQ";
+import { RelatedServices } from "@/components/site/RelatedServices";
 import heroImg from "@/assets/service-depannage.jpg";
 
 const TITLE = "Dépannage piscine en Suisse romande | Estavayer, Payerne, Yverdon";
