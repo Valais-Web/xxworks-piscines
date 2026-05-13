@@ -105,6 +105,9 @@ function Page() {
 
       <ServiceFAQ items={FAQ} />
 
+      <ZonesLinkBar serviceLabel="Équipements piscine" />
+      <RelatedServices currentSlug="equipements" />
+
       <SectionCta />
     </>
   );
