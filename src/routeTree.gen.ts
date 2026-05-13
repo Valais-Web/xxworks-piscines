@@ -16,6 +16,7 @@ import { Route as EquipementsRouteImport } from './routes/equipements'
 import { Route as EntretienRouteImport } from './routes/entretien'
 import { Route as DepannageRouteImport } from './routes/depannage'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ConstructionRouteImport } from './routes/construction'
 import { Route as AutomatisationRouteImport } from './routes/automatisation'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ZonesYverdonLesBainsRouteImport } from './routes/zones.yverdon-les-bains'
@@ -60,6 +61,11 @@ const DepannageRoute = DepannageRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConstructionRoute = ConstructionRouteImport.update({
+  id: '/construction',
+  path: '/construction',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AutomatisationRoute = AutomatisationRouteImport.update({
@@ -116,6 +122,7 @@ const ZonesAvenchesRoute = ZonesAvenchesRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/automatisation': typeof AutomatisationRoute
+  '/construction': typeof ConstructionRoute
   '/contact': typeof ContactRoute
   '/depannage': typeof DepannageRoute
   '/entretien': typeof EntretienRoute
@@ -135,6 +142,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/automatisation': typeof AutomatisationRoute
+  '/construction': typeof ConstructionRoute
   '/contact': typeof ContactRoute
   '/depannage': typeof DepannageRoute
   '/entretien': typeof EntretienRoute
@@ -155,6 +163,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/automatisation': typeof AutomatisationRoute
+  '/construction': typeof ConstructionRoute
   '/contact': typeof ContactRoute
   '/depannage': typeof DepannageRoute
   '/entretien': typeof EntretienRoute
@@ -176,6 +185,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/automatisation'
+    | '/construction'
     | '/contact'
     | '/depannage'
     | '/entretien'
@@ -195,6 +205,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/automatisation'
+    | '/construction'
     | '/contact'
     | '/depannage'
     | '/entretien'
@@ -214,6 +225,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/automatisation'
+    | '/construction'
     | '/contact'
     | '/depannage'
     | '/entretien'
@@ -234,6 +246,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AutomatisationRoute: typeof AutomatisationRoute
+  ConstructionRoute: typeof ConstructionRoute
   ContactRoute: typeof ContactRoute
   DepannageRoute: typeof DepannageRoute
   EntretienRoute: typeof EntretienRoute
@@ -300,6 +313,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/construction': {
+      id: '/construction'
+      path: '/construction'
+      fullPath: '/construction'
+      preLoaderRoute: typeof ConstructionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/automatisation': {
@@ -378,6 +398,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AutomatisationRoute: AutomatisationRoute,
+  ConstructionRoute: ConstructionRoute,
   ContactRoute: ContactRoute,
   DepannageRoute: DepannageRoute,
   EntretienRoute: EntretienRoute,
