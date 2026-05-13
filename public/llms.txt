@@ -1,0 +1,26 @@
+# Xx Works Sàrl
+
+> Pisciniste expert en Suisse romande, spécialisé en automatisation, entretien et dépannage de piscines privées. Basé à Granges-de-Vesin (Broye), interventions sur Estavayer-le-Lac, Payerne, Avenches, Morat, Yverdon-les-Bains, Lucens, Neuchâtel et Fribourg. Brevet fédéral, 15 ans d'expérience.
+
+## Services
+
+- [Automatisation piscine](/automatisation): Régulation pH/chlore, contre-lavage, suivi à distance, domotique (Bayrol, Dryden Aqua).
+- [Entretien piscine](/entretien): Mise en service, suivi saisonnier, hivernage, contrats annuels.
+- [Dépannage piscine](/depannage): Fuites, pompes, filtres, automatismes, chauffage. Intervention rapide.
+- [Équipements piscine](/equipements): Pompes à vitesse variable, filtres AFM, pompes à chaleur, couvertures, douches.
+- [Produits d'entretien](/produits): Chlore, brome, pH, floculants, anti-calcaire de qualité professionnelle.
+
+## Zones desservies
+
+- [Estavayer-le-Lac](/zones/estavayer-le-lac)
+- [Payerne](/zones/payerne)
+- [Avenches](/zones/avenches)
+- [Morat](/zones/morat)
+- [Yverdon-les-Bains](/zones/yverdon-les-bains)
+- [Lucens](/zones/lucens)
+- [Neuchâtel](/zones/neuchatel)
+- [Fribourg](/zones/fribourg)
+
+## Contact
+
+- [Contact](/contact): Demande de devis gratuit, téléphone +41 78 258 53 58, email info@xxworks.ch.
