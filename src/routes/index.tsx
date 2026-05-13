@@ -31,7 +31,7 @@ function Index() {
   return (
     <>
       {/* Hero */}
-      <section className="relative isolate overflow-hidden -mt-[72px] pt-[72px]">
+      <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <img src={heroImg} alt="Piscine luxueuse au crépuscule en Suisse romande" className="h-full w-full object-cover" loading="eager" width={1920} height={1080} />
           <div className="absolute inset-0" style={{ background: "linear-gradient(105deg, oklch(0.18 0.05 240 / 0.85) 0%, oklch(0.32 0.13 245 / 0.55) 50%, oklch(0.36 0.08 150 / 0.30) 100%)" }} />

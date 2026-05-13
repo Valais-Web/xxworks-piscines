@@ -17,10 +17,10 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-50 transition-all duration-300 bg-background ${
         scrolled
-          ? "bg-background/85 backdrop-blur-lg border-b border-border shadow-[0_2px_20px_rgba(0,0,0,0.05)]"
-          : "bg-background/60 backdrop-blur-md"
+          ? "border-b border-border shadow-[0_2px_20px_rgba(0,0,0,0.05)]"
+          : ""
       }`}
     >
       <div className="container-prose flex items-center justify-between py-3.5">
