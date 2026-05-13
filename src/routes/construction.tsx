@@ -92,7 +92,7 @@ function Page() {
 
       <ContentSection alt>
         <FadeIn className="text-center max-w-2xl mx-auto">
-          <span className="badge-eyebrow mb-4">Types de piscines</font></span>
+          <span className="badge-eyebrow mb-4">Types de piscines</span>
           <h2 className="text-3xl md:text-4xl font-bold">Quel type de bassin pour votre projet ?</h2>
           <p className="mt-4 text-muted-foreground">Chaque solution a ses forces. Nous vous orientons selon votre terrain, votre budget et vos usages.</p>
         </FadeIn>
