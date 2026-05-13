@@ -130,7 +130,7 @@ function Page() {
       <ContentSection alt>
         <div className="grid lg:grid-cols-2 gap-12">
           <FadeIn>
-            <span className="badge-eyebrow mb-4"><Sparkles className="h-3.5 w-3.5" /> RivieraPool</span>
+            <span className="badge-eyebrow mb-4">RivieraPool</span>
             <h2 className="text-2xl md:text-3xl font-bold">Partenaire RivieraPool : piscines inox et mini-piscines</h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
               Nous installons les piscines préfabriquées <strong>RivieraPool</strong>, référence européenne du bassin inox AISI 316L. Cette technologie offre une longévité exceptionnelle (50 ans et plus), une esthétique contemporaine et une installation rapide grâce à un montage en éléments préfabriqués.
@@ -147,7 +147,7 @@ function Page() {
             </ul>
           </FadeIn>
           <FadeIn>
-            <span className="badge-eyebrow mb-4"><Lightbulb className="h-3.5 w-3.5" /> Conception</span>
+            <span className="badge-eyebrow mb-4">Conception</span>
             <h2 className="text-2xl md:text-3xl font-bold">Pensée dès le départ pour l'automatisation</h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
               Une piscine neuve doit être <strong>conçue dès le départ pour accueillir les automatismes</strong> : régulation Bayrol Poolmanager, contre-lavage automatique Besgo, pompe à vitesse variable Badu, supervision à distance. Cela évite les bricolages coûteux quelques années plus tard.
