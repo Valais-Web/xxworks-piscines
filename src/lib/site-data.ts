@@ -14,6 +14,7 @@ export const SITE = {
 };
 
 export const SERVICES = [
+  { slug: "construction", title: "Construction & installation", short: "Conception et installation de piscines neuves clé en main." },
   { slug: "automatisation", title: "Automatisation", short: "Régulation, domotique et pilotage à distance de votre piscine." },
   { slug: "entretien", title: "Entretien", short: "Mise en service, suivi saisonnier et hivernage." },
   { slug: "depannage", title: "Dépannage", short: "Intervention rapide pour fuites, pompes, filtres et automatismes." },
