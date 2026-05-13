@@ -4,6 +4,7 @@
 
 ## Services
 
+- [Construction & installation](/construction): Conception et installation de piscines neuves clé en main (maçonnerie, coque, inox RivieraPool).
 - [Automatisation piscine](/automatisation): Régulation pH/chlore, contre-lavage, suivi à distance, domotique (Bayrol, Dryden Aqua).
 - [Entretien piscine](/entretien): Mise en service, suivi saisonnier, hivernage, contrats annuels.
 - [Dépannage piscine](/depannage): Fuites, pompes, filtres, automatismes, chauffage. Intervention rapide.

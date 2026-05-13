@@ -5,6 +5,8 @@ import { PageHero, ContentSection } from "@/components/site/PageHero";
 import { SectionCta } from "@/components/site/SectionCta";
 import { FadeIn } from "@/components/site/FadeIn";
 import { ServiceFAQ } from "@/components/site/ServiceFAQ";
+import { ZonesLinkBar } from "@/components/site/ZonesLinkBar";
+import { RelatedServices } from "@/components/site/RelatedServices";
 import heroImg from "@/assets/service-construction.jpg";
 
 const TITLE = "Construction de piscine en Suisse romande | Xx Works";
@@ -167,6 +169,9 @@ function Page() {
       </ContentSection>
 
       <ServiceFAQ items={FAQ} />
+
+      <ZonesLinkBar serviceLabel="Construction de piscine" />
+      <RelatedServices currentSlug="construction" />
 
       <SectionCta />
     </>
