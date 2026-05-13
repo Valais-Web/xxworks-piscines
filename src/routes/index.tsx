@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Sparkles, Wrench, Phone, Cog, Droplets, ShieldCheck, Award, Zap, HeartHandshake, Check, ArrowRight, Star, MapPin, Clock, Quote, Waves } from "lucide-react";
+import { Sparkles, Wrench, Phone, Cog, Droplets, ShieldCheck, Award, Zap, HeartHandshake, Check, ArrowRight, Star, MapPin, Clock, Quote, Waves, HardHat } from "lucide-react";
 import { SERVICES, ZONES, SITE, buildSeo, canonical } from "@/lib/site-data";
 import { ContactForm } from "@/components/site/ContactForm";
 import { FadeIn } from "@/components/site/FadeIn";
@@ -19,6 +19,7 @@ export const Route = createFileRoute("/")({
 });
 
 const serviceIcons: Record<string, React.ReactNode> = {
+  construction: <HardHat className="h-6 w-6" />,
   automatisation: <Cog className="h-6 w-6" />,
   entretien: <Droplets className="h-6 w-6" />,
   depannage: <Wrench className="h-6 w-6" />,

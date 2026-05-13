@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Cog, Droplets, Wrench, Zap, Sparkles, Award, ShieldCheck, HeartHandshake, MapPin, Clock, Check, ArrowRight, Lightbulb } from "lucide-react";
+import { Cog, Droplets, Wrench, Zap, Sparkles, Award, ShieldCheck, HeartHandshake, MapPin, Clock, Check, ArrowRight, Lightbulb, HardHat } from "lucide-react";
 import { SERVICES, SITE, type Zone } from "@/lib/site-data";
 import { PageHero, ContentSection } from "@/components/site/PageHero";
 import { SectionCta } from "@/components/site/SectionCta";
@@ -8,6 +8,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import zonesImg from "@/assets/hero-zones.jpg";
 
 const serviceIcons: Record<string, React.ReactNode> = {
+  construction: <HardHat className="h-6 w-6" />,
   automatisation: <Cog className="h-6 w-6" />,
   entretien: <Droplets className="h-6 w-6" />,
   depannage: <Wrench className="h-6 w-6" />,
