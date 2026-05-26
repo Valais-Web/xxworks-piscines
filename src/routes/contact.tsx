@@ -65,7 +65,7 @@ function Page() {
         <div className="mt-6 rounded-lg overflow-hidden border shadow-card aspect-[16/8]">
           <iframe
             title="Carte Granges-de-Vesin"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=6.85%2C46.79%2C6.95%2C46.84&layer=mapnik&marker=46.815%2C6.901"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=6.80%2C46.79%2C6.90%2C46.84&layer=mapnik&marker=46.817%2C6.850"
             className="w-full h-full"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

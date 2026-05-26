@@ -164,11 +164,11 @@ export function ZonePage({ zone }: { zone: Zone }) {
             <span className="badge-eyebrow mb-4">Pourquoi Xx Works</span>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight">Un spécialiste, pas un généraliste</h2>
             <p className="mt-5 text-muted-foreground leading-relaxed">
-              Beaucoup de paysagistes proposent des services piscine. Peu ont la formation technique et chimique pour les assurer correctement. Guillaume Risson détient un <strong>brevet fédéral en technique piscine</strong> et 15 ans d'expérience dédiés à ce métier — hydraulique, automatisation, chimie de l'eau.
+              Beaucoup de paysagistes proposent des services piscine. Peu ont la formation technique et chimique pour les assurer correctement. Guillaume Risson détient un <strong>brevet fédéral en technique de l'eau</strong> et 15 ans d'expérience dédiés à ce métier — hydraulique, automatisation, chimie de l'eau.
             </p>
             <ul className="mt-7 space-y-3.5">
               {[
-                "Brevet fédéral en technique piscine (formation professionnelle supérieure)",
+                "Brevet fédéral en technique de l'eau (formation professionnelle supérieure)",
                 "Maîtrise complète de la chimie, de l'hydraulique et de l'automatisation",
                 "Marques pro exclusives : Bayrol, Dryden Aqua, Badu, Besgo, OSF",
                 "Devis transparent, validé avec vous avant toute intervention",
@@ -186,7 +186,7 @@ export function ZonePage({ zone }: { zone: Zone }) {
           <FadeIn>
             <div className="grid gap-4">
               {[
-                { i: <Award className="h-5 w-5" />, t: "Brevet fédéral", d: "Seule certification suisse reconnue en technique piscine. Gage de formation continue et de maîtrise réelle du métier." },
+                { i: <Award className="h-5 w-5" />, t: "Brevet fédéral", d: "Formation en technique de l'eau — certification professionnelle supérieure suisse. Gage de maîtrise réelle du métier." },
                 { i: <ShieldCheck className="h-5 w-5" />, t: "15 ans d'expérience", d: "Des centaines d'installations connues dans la région. Chaque diagnostic est posé avec recul et précision." },
                 { i: <HeartHandshake className="h-5 w-5" />, t: "Accompagnement complet", d: "De la mise en service au suivi hivernal, un seul interlocuteur qui connaît votre installation." },
               ].map((b) => (

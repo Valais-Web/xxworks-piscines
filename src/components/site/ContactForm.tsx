@@ -56,7 +56,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
       <button type="submit" className="btn-primary justify-self-start">
         <Send className="h-4 w-4" /> Envoyer la demande
       </button>
-      <p className="text-xs text-muted-foreground">Réponse sous 24h ouvrées · Vos données restent confidentielles.</p>
+      <p className="text-xs text-muted-foreground">Réponse sous 48h ouvrées · Vos données restent confidentielles.</p>
     </form>
   );
 }

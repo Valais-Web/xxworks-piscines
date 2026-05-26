@@ -11,7 +11,6 @@ import {
 import appCss from "../styles.css?url";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import { CookieBanner } from "@/components/site/CookieBanner";
 import { SITE } from "@/lib/site-data";
 
 function NotFoundComponent() {
@@ -115,7 +114,6 @@ function RootComponent() {
         <Outlet />
       </main>
       <Footer />
-      <CookieBanner />
     </QueryClientProvider>
   );
 }
