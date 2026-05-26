@@ -17,7 +17,7 @@ const FAQ = [
   { q: "À quelle fréquence faut-il faire entretenir une piscine familiale ?", a: "Pour une piscine familiale de 40 à 70 m³ fréquentée 3 à 5 fois par semaine, un entretien bi-mensuel est le bon compromis. Une piscine très fréquentée ou soumise à forte chaleur peut nécessiter un suivi hebdomadaire en juillet-août. Une piscine automatisée peut se contenter d'un suivi mensuel." },
   { q: "Que comprend une mise en service au printemps ?", a: "Notre mise en service comprend : contrôle complet de l'installation hydraulique et électrique, paramétrage des automatismes, nettoyage du bassin et des équipements internes, équilibrage chimique (pH, TAC, TH, désinfection), remise en route et tests de bon fonctionnement. Durée : 2 à 4 heures selon l'état. Compte-rendu transmis par email." },
   { q: "Peut-on souscrire un contrat d'entretien en cours de saison ?", a: "Oui, il n'est pas nécessaire d'attendre le printemps. Nous prenons en charge les contrats à tout moment de la saison, après une première visite de diagnostic permettant d'évaluer l'état de l'installation et de l'eau." },
-  { q: "Quelle est la différence entre un hivernage actif et un hivernage passif ?", a: "L'hivernage actif maintient une filtration courte quotidienne (2–4h) durant l'hiver : l'eau reste en circulation, le traitement préventif est maintenu. Il convient aux installations bien isolées et automatisées. L'hivernage passif vide partiellement la piscine, purge les canalisations et arrête complètement la filtration : adapté aux hivers rigoureux ou aux longues absences." },
+  { q: "Quelle est la différence entre un hivernage actif et un hivernage passif ?", a: "L'hivernage actif maintient une filtration courte quotidienne (2–4h) ou en continu (24h/24h) avec une pompe à vitesse variable : l'eau reste en circulation, le traitement préventif est maintenu. Il convient particulièrement aux installations automatisées. L'hivernage passif vide partiellement la piscine, purge les canalisations et arrête complètement la filtration : adapté aux hivers rigoureux ou aux longues absences." },
   { q: "L'entretien inclut-il la fourniture des produits chimiques ?", a: "Les produits chimiques peuvent être fournis par Xx Works (gamme professionnelle) ou apportés par le client. Nous recommandons nos gammes professionnelles car leur concentration supérieure offre un meilleur rendement et une action plus homogène. Les produits grande surface sont souvent sous-dosés et peuvent créer des déséquilibres." },
 ];
 
@@ -116,7 +116,7 @@ function Page() {
           <div className="card-feature">
             <div className="icon-tile mb-4"><Snowflake className="h-5 w-5" /></div>
             <h3 className="font-bold text-lg">Hivernage actif</h3>
-            <p className="mt-3 text-[15px] text-muted-foreground leading-relaxed">La filtration tourne quelques heures par jour, par cycles courts. Idéal pour les piscines bien isolées et automatisées. Remise en route au printemps simplifiée, eau préservée.</p>
+            <p className="mt-3 text-[15px] text-muted-foreground leading-relaxed">La filtration tourne quelques heures par jour (2–4h), voire en continu (24h/24h) avec une pompe à vitesse variable. Convient particulièrement aux installations automatisées. Remise en route au printemps simplifiée, eau préservée.</p>
           </div>
           <div className="card-feature">
             <div className="icon-tile-primary mb-4"><Snowflake className="h-5 w-5" /></div>

@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { SITE } from "@/lib/site-data";
 import { Phone, ArrowRight } from "lucide-react";
 
-export function SectionCta({ title = "Prêt à profiter pleinement de votre piscine ?", subtitle = "Demandez un devis gratuit et personnalisé. Réponse sous 24h ouvrées." }: { title?: string; subtitle?: string }) {
+export function SectionCta({ title = "Prêt à profiter pleinement de votre piscine ?", subtitle = "Demandez un devis gratuit et personnalisé. Réponse sous 48h ouvrées." }: { title?: string; subtitle?: string }) {
   return (
     <section className="relative overflow-hidden text-white" style={{ backgroundImage: "var(--gradient-hero)" }}>
       <div className="absolute inset-0 pointer-events-none opacity-30" style={{ backgroundImage: "radial-gradient(at 15% 20%, rgba(255,255,255,0.25), transparent 45%), radial-gradient(at 85% 80%, oklch(0.55 0.15 235 / 0.6), transparent 50%)" }} />

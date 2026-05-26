@@ -8,7 +8,7 @@ import teamImg from "@/assets/about-team.jpg";
 import waterImg from "@/assets/service-produits.jpg";
 
 const TITLE = "Pisciniste en Suisse romande | Xx Works Sàrl";
-const DESC = "Automatisation, entretien et dépannage de piscines en Suisse romande. 15 ans d'expérience, brevet fédéral. Devis gratuit sous 24h.";
+const DESC = "Automatisation, entretien et dépannage de piscines en Suisse romande. 15 ans d'expérience, brevet fédéral. Devis gratuit sous 48h.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -54,7 +54,7 @@ function Index() {
             <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-sm">
               <span className="flex items-center gap-2 opacity-95"><ShieldCheck className="h-4 w-4 text-pool-light" /> Brevet fédéral</span>
               <span className="flex items-center gap-2 opacity-95"><Award className="h-4 w-4 text-pool-light" /> 15 ans d'expérience</span>
-              <span className="flex items-center gap-2 opacity-95"><Clock className="h-4 w-4 text-pool-light" /> Réponse sous 24h</span>
+              <span className="flex items-center gap-2 opacity-95"><Clock className="h-4 w-4 text-pool-light" /> Réponse sous 48h</span>
             </div>
           </FadeIn>
         </div>
@@ -63,12 +63,11 @@ function Index() {
       {/* Stats */}
       <section className="relative -mt-12 z-10 px-4">
         <div className="container-prose">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)] bg-card">
+          <div className="grid grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden shadow-[0_20px_60px_-20px_rgba(0,0,0,0.15)] bg-card">
             {[
               { v: "15+", l: "Années d'expertise" },
               { v: "8", l: "Zones desservies" },
-              { v: "200+", l: "Piscines suivies" },
-              { v: "24h", l: "Délai de réponse" },
+              { v: "48h", l: "Délai de réponse" },
             ].map((s) => (
               <div key={s.l} className="bg-card px-4 py-7 text-center">
                 <div className="text-3xl md:text-4xl font-bold gradient-text">{s.v}</div>
@@ -85,7 +84,7 @@ function Index() {
           <h2 className="sr-only">Pourquoi choisir Xx Works</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: <Award className="h-6 w-6" />, t: "Expertise certifiée", d: "Brevet fédéral en technique piscine et 15 ans de pratique sur des installations variées en Suisse romande." },
+              { icon: <Award className="h-6 w-6" />, t: "Expertise certifiée", d: "Brevet fédéral en technique de l'eau et 15 ans de pratique sur des installations variées en Suisse romande." },
               { icon: <HeartHandshake className="h-6 w-6" />, t: "Service personnalisé", d: "Structure indépendante : prestations à la carte, accompagnement direct et flexibilité maximale." },
               { icon: <ShieldCheck className="h-6 w-6" />, t: "Suivi de A à Z", d: "De la conception au suivi annuel, un seul interlocuteur de confiance, des conseils transparents." },
             ].map((b, i) => (
@@ -138,7 +137,7 @@ function Index() {
             </p>
             <ul className="mt-7 space-y-3.5">
               {[
-                "Brevet fédéral en technique piscine",
+                "Brevet fédéral en technique de l'eau",
                 "Maîtrise de la chimie et de l'hydraulique",
                 "Marques pro : Bayrol, Dryden Aqua, Badu, Besgo, OSF",
                 "Devis transparents, validés avant intervention",
@@ -207,7 +206,7 @@ function Index() {
           <div className="mt-12 grid md:grid-cols-3 gap-6">
             {[
               { n: "Marc D.", c: "Avenches", t: "Installation d'une régulation Bayrol et d'une pompe à vitesse variable. Travail propre, conseils pertinents, économie d'énergie immédiate." },
-              { n: "Sophie L.", c: "Yverdon-les-Bains", t: "Suivi annuel de notre piscine depuis 3 ans. Toujours ponctuel, professionnel, et l'eau est parfaite en permanence." },
+              { n: "Sophie L.", c: "Yverdon-les-Bains", t: "Suivi de notre piscine depuis 2 ans. Toujours ponctuel, professionnel, et l'eau est parfaite en permanence." },
               { n: "Famille Rey", c: "Fribourg", t: "Dépannage d'urgence un dimanche. Intervention rapide, problème résolu, très bon contact. Je recommande." },
             ].map((tm) => (
               <FadeIn key={tm.n}>
@@ -259,7 +258,7 @@ function Index() {
           <div className="lg:col-span-2">
             <span className="badge-eyebrow mb-4">Contact</span>
             <h2 className="text-3xl md:text-4xl font-bold leading-tight">Parlons de votre projet piscine</h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed">Devis gratuit et personnalisé, réponse sous 24h ouvrées. Conseils sans engagement.</p>
+            <p className="mt-4 text-muted-foreground leading-relaxed">Devis gratuit et personnalisé, réponse sous 48h ouvrées. Conseils sans engagement.</p>
             <div className="mt-8 space-y-4">
               <a href={SITE.phoneHref} className="flex items-center gap-3 group">
                 <span className="icon-tile-primary"><Phone className="h-5 w-5" /></span>

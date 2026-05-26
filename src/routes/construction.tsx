@@ -16,9 +16,9 @@ const PATH = "/construction";
 const FAQ = [
   { q: "Quel est le délai pour construire une piscine en Suisse romande ?", a: "Pour une piscine enterrée standard, comptez 8 à 16 semaines entre la signature du devis et la mise en eau, hors démarches administratives. Les piscines coque ou inox préfabriquées (type RivieraPool) sont plus rapides : 3 à 6 semaines une fois les autorisations obtenues. Les délais varient selon la saison, l'accès au chantier et la complexité du local technique." },
   { q: "Faut-il un permis de construire pour une piscine privée en Suisse ?", a: "Oui, dans la grande majorité des cas. Les règles dépendent du canton et de la commune : surface, profondeur, distance aux limites, hauteur du plan d'eau et impact paysager sont systématiquement examinés. Nous accompagnons nos clients sur la constitution du dossier et la coordination avec la commune et les éventuels mandataires (architecte, géomètre)." },
-  { q: "Quelle est la différence entre une piscine maçonnée, une coque et une piscine inox ?", a: "La piscine maçonnée (béton + revêtement liner ou carrelage) offre une liberté totale de forme et une grande durabilité, pour un budget et un délai plus élevés. La coque polyester est livrée d'un bloc, installée en quelques jours, avec un excellent rapport qualité/prix. L'inox (RivieraPool) combine longévité exceptionnelle, esthétique contemporaine et gamme préfabriquée modulable, idéale pour les projets premium ou les terrains complexes." },
+  { q: "Quelle est la différence entre une piscine maçonnée, une coque polyester et une piscine inox ?", a: "La piscine maçonnée (béton + revêtement liner ou carrelage) offre une liberté totale de forme et une grande durabilité, pour un budget et un délai plus élevés. La coque polyester (RivieraPool) est livrée d'un bloc, installée en quelques jours, avec un excellent rapport qualité/prix. L'inox (acier inoxydable AISI 316L) combine longévité exceptionnelle et esthétique contemporaine — idéal pour les projets premium ou les terrains complexes." },
   { q: "Peut-on installer une mini-piscine ou un spa dans un petit jardin ?", a: "Oui. Les mini-piscines (généralement < 10 m² et < 1.5 m de profondeur) bénéficient souvent d'une procédure administrative simplifiée et s'intègrent dans des terrains réduits ou en terrasse. Les spas et nages à contre-courant compacts permettent une vraie expérience aquatique sans les contraintes d'un bassin classique. Nous installons régulièrement ces solutions, notamment la gamme RivieraPool." },
-  { q: "Quel budget prévoir pour une piscine neuve clé en main ?", a: "Un budget réaliste se situe entre 35 000 et 80 000 CHF pour une piscine coque ou inox de taille familiale équipée correctement (filtration, traitement automatique, couverture). Une piscine maçonnée sur-mesure avec aménagements complets dépasse fréquemment 100 000 CHF. Nous établissons un chiffrage transparent ligne par ligne après visite du terrain." },
+  { q: "Quel budget prévoir pour une piscine neuve clé en main ?", a: "Un budget réaliste se situe entre 60 000 et 80 000 CHF pour une piscine coque polyester de taille familiale bien équipée (filtration, traitement automatique, couverture). Une piscine inox se situe entre 100 000 et 120 000 CHF. Une piscine maçonnée sur-mesure ou tout équipée avec les aménagements complets dépasse fréquemment ce seuil. Nous établissons un chiffrage transparent ligne par ligne après visite du terrain." },
   { q: "Travaillez-vous avec d'autres corps de métier (terrassement, maçonnerie, électricité) ?", a: "Oui. Nous coordonnons l'ensemble des intervenants nécessaires (terrassier, maçon, électricien, paysagiste) ou nous intégrons votre installation à un chantier déjà en cours avec d'autres entreprises. Notre rôle est de garantir la cohérence technique du projet : implantation, hydraulique, électricité, automatisation et finitions." },
 ];
 
@@ -36,9 +36,9 @@ export const Route = createFileRoute("/construction")({
 
 const types = [
   { i: <Layers className="h-5 w-5" />, t: "Piscines maçonnées", d: "Bassins béton sur-mesure avec revêtement liner, membrane armée ou carrelage. Liberté de formes et de dimensions, durabilité maximale." },
-  { i: <Compass className="h-5 w-5" />, t: "Piscines coque polyester", d: "Bassins monoblocs préfabriqués, installés en quelques jours. Excellente étanchéité, entretien simplifié, rapport qualité-prix imbattable." },
-  { i: <Sparkles className="h-5 w-5" />, t: "Piscines inox RivieraPool", d: "Solution premium en acier inoxydable AISI 316L. Esthétique contemporaine, longévité exceptionnelle, idéal pour projets architecturaux ambitieux." },
-  { i: <Ruler className="h-5 w-5" />, t: "Mini-piscines & spas", d: "Bassins compacts (< 10 m²), spas de nage et nages à contre-courant. Parfait pour petits jardins, terrasses ou rénovations." },
+  { i: <Compass className="h-5 w-5" />, t: "Piscines coque polyester RivieraPool", d: "Bassins monoblocs préfabriqués RivieraPool, installés en quelques jours. Excellente étanchéité, entretien simplifié, rapport qualité-prix imbattable." },
+  { i: <Sparkles className="h-5 w-5" />, t: "Piscines inox", d: "Solution premium en acier inoxydable AISI 316L. Esthétique contemporaine, longévité exceptionnelle, idéale pour projets architecturaux ambitieux." },
+  { i: <Ruler className="h-5 w-5" />, t: "Mini-piscines & spas", d: "Bassins compacts (< 10 m²) C-Side Pools & Spas, spas de nage et nages à contre-courant. Parfait pour petits jardins, terrasses ou rénovations." },
 ];
 
 const steps = [
@@ -69,14 +69,14 @@ function Page() {
               Construire une piscine, c'est un investissement sur plusieurs décennies. Notre rôle est de concevoir un bassin qui restera <strong>performant, économe et plaisant à vivre</strong> pendant toute sa durée de vie — pas seulement les premières saisons.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Cela passe par un dimensionnement hydraulique précis, le choix d'équipements professionnels (Bayrol, Dryden Aqua, Badu), une automatisation pensée dès le départ et des finitions soignées. Notre brevet fédéral en technique piscine garantit le sérieux de chaque étape.
+              Cela passe par un dimensionnement hydraulique précis, le choix d'équipements professionnels (Bayrol, Dryden Aqua, Badu), une automatisation pensée dès le départ et des finitions soignées. Notre brevet fédéral en technique de l'eau garantit le sérieux de chaque étape.
             </p>
           </FadeIn>
           <FadeIn>
             <div className="grid gap-4">
               {[
                 { i: <ShieldCheck className="h-5 w-5" />, t: "Pisciniste diplômé", d: "Brevet fédéral et 15 ans de pratique. Vous traitez avec un spécialiste, pas un revendeur." },
-                { i: <HardHat className="h-5 w-5" />, t: "Coordination intégrale", d: "Terrassement, maçonnerie, électricité, paysage : nous orchestrons tous les corps de métier." },
+                { i: <HardHat className="h-5 w-5" />, t: "Coordination intégrale", d: "Terrassement, maçonnerie, électricité, paysage : nous prenons en charge la globalité du projet." },
                 { i: <Sparkles className="h-5 w-5" />, t: "Marques pro garanties", d: "Bayrol, Dryden Aqua, Badu, Besgo, RivieraPool : matériel professionnel et pièces détachées disponibles longtemps." },
               ].map((b) => (
                 <div key={b.t} className="card-soft flex gap-4 items-start">
@@ -133,12 +133,12 @@ function Page() {
         <div className="grid lg:grid-cols-2 gap-12">
           <FadeIn>
             <span className="badge-eyebrow mb-4">RivieraPool</span>
-            <h2 className="text-2xl md:text-3xl font-bold">Partenaire RivieraPool : piscines inox et mini-piscines</h2>
+            <h2 className="text-2xl md:text-3xl font-bold">Partenaire RivieraPool : piscines préfabriquées et mini-piscines</h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Nous installons les piscines préfabriquées <strong>RivieraPool</strong>, référence européenne du bassin inox AISI 316L. Cette technologie offre une longévité exceptionnelle (50 ans et plus), une esthétique contemporaine et une installation rapide grâce à un montage en éléments préfabriqués.
+              Nous installons les piscines préfabriquées <strong>RivieraPool</strong>, référence en bassins coques polyester préfabriqués. Cette technologie offre une installation rapide grâce à un montage en éléments préfabriqués, une excellente étanchéité et un excellent rapport qualité-prix.
             </p>
             <ul className="mt-6 space-y-3">
-              {["Piscines inox enterrées et hors-sol sur-mesure", "Mini-piscines pour terrasses et petits jardins", "Spas de nage avec contre-courant intégré", "Garantie longue durée sur la structure inox"].map((t) => (
+              {["Piscines coques polyester enterrées et hors-sol", "Mini-piscines C-Side Pools & Spas pour terrasses et petits jardins", "Spas de nage avec contre-courant intégré", "Installation rapide et garantie constructeur"].map((t) => (
                 <li key={t} className="flex gap-3 items-start">
                   <span className="h-5 w-5 rounded-full grid place-items-center mt-0.5 shrink-0" style={{ backgroundImage: "var(--gradient-water)" }}>
                     <Check className="h-3 w-3 text-white" />
