@@ -7,7 +7,7 @@ import { FadeIn } from "@/components/site/FadeIn";
 import { ServiceFAQ } from "@/components/site/ServiceFAQ";
 import { ZonesLinkBar } from "@/components/site/ZonesLinkBar";
 import { RelatedServices } from "@/components/site/RelatedServices";
-import heroImg from "@/assets/service-produits.jpg";
+import heroImg from "/service-produits.png";
 
 const TITLE = "Produits d'entretien piscine professionnels | Xx Works";
 const DESC = "Produits de traitement piscine de qualité professionnelle : pH, chlore, brome, floculants, anti-calcaire. Conseil personnalisé pour votre bassin en Suisse romande.";
