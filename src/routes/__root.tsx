@@ -72,6 +72,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Xx Works Sàrl — Pisciniste en Suisse romande" },
       { name: "description", content: "Xx Works Sàrl, pisciniste basé à Granges-de-Vesin. Services piscine en Suisse romande." },
       { name: "robots", content: "index, follow" },
+      { name: "google-site-verification", content: "REpNPp7fkttetVDsjoRAfNZ6g0siwrgYnd0Z5r7OHYE" },
       { property: "og:site_name", content: SITE.name },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
