@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, MessageCircle, MapPin, Phone, Mail } from "lucide-react";
 import { SERVICES, ZONES, SITE } from "@/lib/site-data";
 import logoMark from "@/assets/logo-mark.png";
+import valaisWebLogo from "@/assets/valaisweb-logo.png";
 
 export function Footer() {
   return (
@@ -63,8 +64,20 @@ export function Footer() {
           <div className="flex flex-wrap gap-5">
             <Link to="/contact" className="hover:underline">Mentions légales</Link>
             <Link to="/contact" className="hover:underline">Politique de confidentialité</Link>
-            <a href="https://valaisweb.ch" target="_blank" rel="noopener" className="hover:underline">Site internet créé par Valais Web</a>
           </div>
+        </div>
+        <div className="container-prose pb-5 flex justify-center">
+          <a
+            href="https://valaisweb.ch"
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-2 text-xs opacity-80 hover:opacity-100 transition-opacity"
+          >
+            <span>Site internet créé par</span>
+            <span className="inline-flex items-center bg-white rounded px-2 py-1">
+              <img src={valaisWebLogo} alt="Valais Web" className="h-4 w-auto" />
+            </span>
+          </a>
         </div>
       </div>
     </footer>
