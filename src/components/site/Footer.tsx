@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, MessageCircle, MapPin, Phone, Mail } from "lucide-react";
 import { SERVICES, ZONES, SITE } from "@/lib/site-data";
 import logoMark from "@/assets/logo-mark.png";
+import valaisWebLogo from "@/assets/valaisweb-logo.png";
 
 export function Footer() {
   return (
