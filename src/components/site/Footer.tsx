@@ -65,6 +65,9 @@ export function Footer() {
             <Link to="/contact" className="hover:underline">Politique de confidentialité</Link>
           </div>
         </div>
+        <div className="container-prose pb-5 text-center text-xs opacity-70">
+          <a href="https://valaisweb.ch" target="_blank" rel="noopener" className="hover:underline">Site internet créé par Valais Web</a>
+        </div>
       </div>
     </footer>
   );
