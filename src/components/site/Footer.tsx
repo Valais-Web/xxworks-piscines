@@ -59,25 +59,27 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10 relative">
-        <div className="container-prose py-5 flex flex-wrap items-center justify-between gap-3 text-xs opacity-80">
-          <div>© {new Date().getFullYear()} Xx Works Sàrl. Tous droits réservés.</div>
-          <div className="flex flex-wrap gap-5">
+        <div className="container-prose py-5 grid grid-cols-1 md:grid-cols-3 items-center gap-3 text-xs opacity-80">
+          <div className="md:justify-self-start text-center md:text-left">
+            © {new Date().getFullYear()} Xx Works Sàrl. Tous droits réservés.
+          </div>
+          <div className="md:justify-self-center">
+            <a
+              href="https://valaisweb.ch"
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 hover:opacity-100 opacity-90 transition-opacity"
+            >
+              <span>Site internet créé par</span>
+              <span className="inline-flex items-center bg-white rounded px-2 py-1">
+                <img src={valaisWebLogo} alt="Valais Web" className="h-4 w-auto" />
+              </span>
+            </a>
+          </div>
+          <div className="flex flex-wrap gap-5 justify-center md:justify-end md:justify-self-end">
             <Link to="/contact" className="hover:underline">Mentions légales</Link>
             <Link to="/contact" className="hover:underline">Politique de confidentialité</Link>
           </div>
-        </div>
-        <div className="container-prose pb-5 flex justify-center">
-          <a
-            href="https://valaisweb.ch"
-            target="_blank"
-            rel="noopener"
-            className="inline-flex items-center gap-2 text-xs opacity-80 hover:opacity-100 transition-opacity"
-          >
-            <span>Site internet créé par</span>
-            <span className="inline-flex items-center bg-white rounded px-2 py-1">
-              <img src={valaisWebLogo} alt="Valais Web" className="h-4 w-auto" />
-            </span>
-          </a>
         </div>
       </div>
     </footer>
