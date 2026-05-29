@@ -5,7 +5,7 @@ export const SITE = {
   phoneHref: "tel:+41782585358",
   email: "info@xxworks.ch",
   address: "Route du Couchon 37, 1484 Granges-de-Vesin",
-  url: "https://xxworks.lovable.app",
+  url: "https://pisciniste.xxworks.ch",
   social: {
     facebook: "https://www.facebook.com/Pare.vue.ch.XxWorks",
     instagram: "https://instagram.com/xxworks.ch",
