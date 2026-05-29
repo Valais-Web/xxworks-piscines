@@ -60,13 +60,11 @@ export function Footer() {
       <div className="border-t border-white/10 relative">
         <div className="container-prose py-5 flex flex-wrap items-center justify-between gap-3 text-xs opacity-80">
           <div>© {new Date().getFullYear()} Xx Works Sàrl. Tous droits réservés.</div>
-          <div className="flex gap-5">
+          <div className="flex flex-wrap gap-5">
             <Link to="/contact" className="hover:underline">Mentions légales</Link>
             <Link to="/contact" className="hover:underline">Politique de confidentialité</Link>
+            <a href="https://valaisweb.ch" target="_blank" rel="noopener" className="hover:underline">Site internet créé par Valais Web</a>
           </div>
-        </div>
-        <div className="container-prose pb-5 text-center text-xs opacity-70">
-          <a href="https://valaisweb.ch" target="_blank" rel="noopener" className="hover:underline">Site internet créé par Valais Web</a>
         </div>
       </div>
     </footer>
