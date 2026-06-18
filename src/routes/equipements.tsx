@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Check, Filter, Flame, ShieldCheck, Sparkles } from "lucide-react";
-import { buildSeo, canonical, SITE } from "@/lib/site-data";
+import { buildSeo, canonical, serviceJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/site-data";
 import { PageHero, ContentSection } from "@/components/site/PageHero";
 import { SectionCta } from "@/components/site/SectionCta";
 import { FadeIn } from "@/components/site/FadeIn";
@@ -30,8 +30,9 @@ export const Route = createFileRoute("/equipements")({
     meta: buildSeo({ title: TITLE, description: DESC, path: PATH }),
     links: canonical(PATH),
     scripts: [
-      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Service", serviceType: "Vente et installation d'équipements piscine", provider: { "@type": "LocalBusiness", name: SITE.name, telephone: SITE.phone }, areaServed: "Suisse romande" }) },
-      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) }) },
+      { type: "application/ld+json", children: JSON.stringify(serviceJsonLd({ serviceType: "Vente et installation d'équipements de piscine", name: "Équipements de piscine", description: DESC, path: PATH })) },
+      { type: "application/ld+json", children: JSON.stringify(faqJsonLd(FAQ)) },
+      { type: "application/ld+json", children: JSON.stringify(breadcrumbJsonLd([{ name: "Accueil", path: "/" }, { name: "Équipements", path: PATH }])) },
     ],
   }),
   component: Page,

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AlertTriangle, Droplets, Wrench, Cpu, FlaskConical, Flame, Phone, Clock, MapPin } from "lucide-react";
-import { buildSeo, canonical, SITE, ZONES } from "@/lib/site-data";
+import { buildSeo, canonical, SITE, ZONES, serviceJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/site-data";
 import { PageHero, ContentSection } from "@/components/site/PageHero";
 import { SectionCta } from "@/components/site/SectionCta";
 import { ContactForm } from "@/components/site/ContactForm";
@@ -26,8 +26,9 @@ export const Route = createFileRoute("/depannage")({
     meta: buildSeo({ title: TITLE, description: DESC, path: PATH }),
     links: canonical(PATH),
     scripts: [
-      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Service", serviceType: "Dépannage piscine", provider: { "@type": "LocalBusiness", name: SITE.name, telephone: SITE.phone }, areaServed: "Suisse romande" }) },
-      { type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map(({ q, a }) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) }) },
+      { type: "application/ld+json", children: JSON.stringify(serviceJsonLd({ serviceType: "Dépannage de piscine", name: "Dépannage de piscine", description: DESC, path: PATH })) },
+      { type: "application/ld+json", children: JSON.stringify(faqJsonLd(FAQ)) },
+      { type: "application/ld+json", children: JSON.stringify(breadcrumbJsonLd([{ name: "Accueil", path: "/" }, { name: "Dépannage", path: PATH }])) },
     ],
   }),
   component: Page,

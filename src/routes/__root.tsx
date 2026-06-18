@@ -11,7 +11,7 @@ import {
 import appCss from "../styles.css?url";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import { SITE } from "@/lib/site-data";
+import { SITE, businessJsonLd, siteEntityJsonLd } from "@/lib/site-data";
 
 function NotFoundComponent() {
   return (
@@ -139,25 +139,6 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-const localBusinessJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: SITE.name,
-  image: `${SITE.url}/og-default.jpg`,
-  url: SITE.url,
-  telephone: SITE.phone,
-  email: SITE.email,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Route du Couchon 37",
-    addressLocality: "Granges-de-Vesin",
-    postalCode: "1484",
-    addressCountry: "CH",
-  },
-  areaServed: ["Estavayer-le-Lac", "Payerne", "Avenches", "Morat", "Yverdon-les-Bains", "Lucens", "Neuchâtel", "Fribourg"],
-  priceRange: "$$",
-};
-
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -166,9 +147,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Xx Works Sàrl — Pisciniste en Suisse romande" },
       { name: "description", content: "Xx Works Sàrl, pisciniste basé à Granges-de-Vesin. Services piscine en Suisse romande." },
       { name: "robots", content: "index, follow" },
+      { name: "theme-color", content: "#0d4a2c" },
       { name: "google-site-verification", content: "REpNPp7fkttetVDsjoRAfNZ6g0siwrgYnd0Z5r7OHYE" },
       { property: "og:site_name", content: SITE.name },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: `${SITE.url}/og-default.jpg` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
@@ -176,7 +159,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.ico" },
     ],
     scripts: [
-      { type: "application/ld+json", children: JSON.stringify(localBusinessJsonLd) },
+      { type: "application/ld+json", children: JSON.stringify(businessJsonLd()) },
+      { type: "application/ld+json", children: JSON.stringify(siteEntityJsonLd()) },
       {
         children:
           "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M7KJZLQP');",
@@ -194,6 +178,11 @@ function RootShell({ children }: { children: React.ReactNode }) {
     <html lang="fr">
       <head>
         <HeadContent />
+        {/* Scroll-reveal animations hide content via opacity until JS runs.
+            For no-JS clients and crawlers, keep the prerendered content visible. */}
+        <noscript>
+          <style>{`.fade-in{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
       </head>
       <body>
         <noscript>

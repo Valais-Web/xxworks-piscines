@@ -13,5 +13,15 @@ export default defineConfig({
   plugins: [netlify()],
   tanstackStart: {
     server: { entry: "server" },
+    // Prerender every route to static HTML at build time (SSG). This guarantees
+    // fully-rendered, JS-free HTML for crawlers and LLM bots (many don't execute
+    // JS), with the Netlify SSR function remaining as a fallback. All 16 routes
+    // are static, so crawlLinks discovers them from the homepage.
+    prerender: {
+      enabled: true,
+      crawlLinks: true,
+      concurrency: 14,
+      failOnError: false,
+    },
   },
 });
