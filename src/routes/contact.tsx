@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram, MessageCircle } from "lucide-react";
-import { buildSeo, canonical, SITE } from "@/lib/site-data";
+import { buildSeo, canonical, SITE, BUSINESS_ID, faqJsonLd, breadcrumbJsonLd } from "@/lib/site-data";
 import { ContentSection, PageHero } from "@/components/site/PageHero";
 import { ContactForm } from "@/components/site/ContactForm";
 import { FadeIn } from "@/components/site/FadeIn";
@@ -9,14 +9,6 @@ const TITLE = "Contact | Xx Works Sàrl, pisciniste en Suisse romande";
 const DESC = "Contactez Xx Works pour votre projet piscine : automatisation, entretien, dépannage. Téléphone, email ou formulaire. Devis gratuit en Suisse romande.";
 const PATH = "/contact";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: buildSeo({ title: TITLE, description: DESC, path: PATH }),
-    links: canonical(PATH),
-  }),
-  component: Page,
-});
-
 const faqs = [
   { q: "Quel est le délai pour recevoir un devis ?", a: "Vous recevez un devis détaillé sous 48h après la visite ou les informations transmises." },
   { q: "Quelles sont vos zones d'intervention ?", a: "Nous intervenons dans toute la Suisse romande, principalement entre Estavayer-le-Lac, Payerne, Yverdon, Neuchâtel et Fribourg." },
@@ -24,6 +16,36 @@ const faqs = [
   { q: "Quelles garanties proposez-vous ?", a: "Tous les équipements installés bénéficient de la garantie constructeur. Nos interventions sont garanties contre tout défaut de pose." },
   { q: "Assurez-vous le suivi après-vente ?", a: "Oui, nous proposons des contrats d'entretien annuels et restons disponibles pour toute question post-intervention." },
 ];
+
+export const Route = createFileRoute("/contact")({
+  head: () => ({
+    meta: buildSeo({ title: TITLE, description: DESC, path: PATH }),
+    links: canonical(PATH),
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: TITLE,
+          url: `${SITE.url}${PATH}`,
+          mainEntity: { "@type": "LocalBusiness", "@id": BUSINESS_ID, name: SITE.name, telephone: SITE.phone, email: SITE.email },
+        }),
+      },
+      { type: "application/ld+json", children: JSON.stringify(faqJsonLd(faqs)) },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          breadcrumbJsonLd([
+            { name: "Accueil", path: "/" },
+            { name: "Contact", path: PATH },
+          ])
+        ),
+      },
+    ],
+  }),
+  component: Page,
+});
 
 function Page() {
   return (

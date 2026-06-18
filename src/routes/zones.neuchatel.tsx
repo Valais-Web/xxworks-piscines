@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ZONES, buildSeo, canonical, SITE } from "@/lib/site-data";
+import { ZONES, buildSeo, canonical, zoneTitle, zoneDesc, zoneJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/site-data";
 import { ZonePage } from "@/components/site/ZonePage";
 
 const ZONE = ZONES.find((z) => z.slug === "neuchatel")!;
-const TITLE = `Pisciniste à ${ZONE.name} | Installation, entretien, dépannage piscine`;
-const DESC = `Pisciniste à ${ZONE.name} : automatisation, entretien et dépannage de piscine. Intervention rapide depuis Granges-de-Vesin. Devis gratuit.`;
+const TITLE = zoneTitle(ZONE.name);
+const DESC = zoneDesc(ZONE.name);
 const PATH = "/zones/neuchatel";
 
 export const Route = createFileRoute("/zones/neuchatel")({
@@ -12,31 +12,17 @@ export const Route = createFileRoute("/zones/neuchatel")({
     meta: buildSeo({ title: TITLE, description: DESC, path: PATH }),
     links: canonical(PATH),
     scripts: [
+      { type: "application/ld+json", children: JSON.stringify(zoneJsonLd(ZONE)) },
       {
         type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          name: SITE.name,
-          telephone: SITE.phone,
-          email: SITE.email,
-          url: `${SITE.url}${PATH}`,
-          address: { "@type": "PostalAddress", streetAddress: "Route du Couchon 37", addressLocality: "Granges-de-Vesin", postalCode: "1484", addressCountry: "CH" },
-          areaServed: { "@type": "City", name: ZONE.name },
-        }),
+        children: JSON.stringify(
+          breadcrumbJsonLd([
+            { name: "Accueil", path: "/" },
+            { name: `Pisciniste à ${ZONE.name}`, path: PATH },
+          ])
+        ),
       },
-      ...(ZONE.faq ? [{
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: ZONE.faq.map(({ q, a }) => ({
-            "@type": "Question",
-            name: q,
-            acceptedAnswer: { "@type": "Answer", text: a },
-          })),
-        }),
-      }] : []),
+      ...(ZONE.faq ? [{ type: "application/ld+json", children: JSON.stringify(faqJsonLd(ZONE.faq)) }] : []),
     ],
   }),
   component: () => <ZonePage zone={ZONE} />,

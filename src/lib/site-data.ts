@@ -182,6 +182,9 @@ export function buildSeo(opts: {
     { property: "og:type", content: "website" },
     { property: "og:url", content: url },
     { property: "og:image", content: image },
+    { property: "og:image:width", content: "1920" },
+    { property: "og:image:height", content: "1080" },
+    { property: "og:image:alt", content: opts.title },
     { property: "og:locale", content: "fr_CH" },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: opts.title },
@@ -192,4 +195,193 @@ export function buildSeo(opts: {
 
 export function canonical(path: string) {
   return [{ rel: "canonical", href: `${SITE.url}${path}` }];
+}
+
+// --- Structured data (schema.org JSON-LD) ---------------------------------
+// One canonical business entity, referenced by @id everywhere for consistency.
+export const BUSINESS_ID = `${SITE.url}/#business`;
+export const ORG_ID = `${SITE.url}/#organization`;
+export const WEBSITE_ID = `${SITE.url}/#website`;
+
+const SAME_AS = [SITE.social.facebook, SITE.social.instagram];
+
+// Geo coordinates per served city (approximate town centre, WGS84).
+export const ZONE_GEO: Record<string, { lat: number; lng: number }> = {
+  "estavayer-le-lac": { lat: 46.8479, lng: 6.847 },
+  payerne: { lat: 46.822, lng: 6.938 },
+  avenches: { lat: 46.88, lng: 7.042 },
+  morat: { lat: 46.928, lng: 7.117 },
+  "yverdon-les-bains": { lat: 46.7785, lng: 6.641 },
+  lucens: { lat: 46.708, lng: 6.839 },
+  neuchatel: { lat: 46.993, lng: 6.931 },
+  fribourg: { lat: 46.806, lng: 7.161 },
+};
+
+const POSTAL_ADDRESS = {
+  "@type": "PostalAddress",
+  streetAddress: "Route du Couchon 37",
+  addressLocality: "Granges-de-Vesin",
+  postalCode: "1484",
+  addressRegion: "FR",
+  addressCountry: "CH",
+} as const;
+
+const OPENING_HOURS = [
+  {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "08:00",
+    closes: "18:00",
+  },
+  {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: "Saturday",
+    opens: "00:00",
+    closes: "00:00",
+    description: "Sur rendez-vous",
+  },
+];
+
+const KNOWS_ABOUT = [
+  "Automatisation de piscine",
+  "Traitement et chimie de l'eau de piscine",
+  "Filtration de piscine",
+  "Pompes à chaleur de piscine",
+  "Construction de piscine",
+  "Dépannage de piscine",
+  "Hivernage de piscine",
+];
+
+/** The canonical LocalBusiness node for the homepage. */
+export function businessJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": BUSINESS_ID,
+    name: SITE.name,
+    alternateName: SITE.tagline,
+    description:
+      "Pisciniste spécialisé en automatisation, entretien, dépannage et construction de piscines privées en Suisse romande. Brevet fédéral en technique de l'eau, 15 ans d'expérience.",
+    image: `${SITE.url}/og-default.jpg`,
+    logo: `${SITE.url}/og-default.jpg`,
+    url: SITE.url,
+    telephone: SITE.phone,
+    email: SITE.email,
+    priceRange: "$$",
+    currenciesAccepted: "CHF",
+    address: POSTAL_ADDRESS,
+    geo: { "@type": "GeoCoordinates", latitude: 46.8175, longitude: 6.8505 },
+    areaServed: ZONES.map((z) => ({ "@type": "City", name: z.name })),
+    openingHoursSpecification: OPENING_HOURS,
+    knowsAbout: KNOWS_ABOUT,
+    founder: { "@type": "Person", name: "Guillaume Risson" },
+    sameAs: SAME_AS,
+  };
+}
+
+/** Organization + WebSite nodes for entity recognition. */
+export function siteEntityJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": ORG_ID,
+        name: SITE.name,
+        alternateName: SITE.tagline,
+        url: SITE.url,
+        logo: `${SITE.url}/og-default.jpg`,
+        email: SITE.email,
+        telephone: SITE.phone,
+        sameAs: SAME_AS,
+      },
+      {
+        "@type": "WebSite",
+        "@id": WEBSITE_ID,
+        name: SITE.name,
+        url: SITE.url,
+        inLanguage: "fr-CH",
+        publisher: { "@id": ORG_ID },
+      },
+    ],
+  };
+}
+
+/** Service node, linked back to the canonical business entity. */
+export function serviceJsonLd(opts: {
+  serviceType: string;
+  name: string;
+  description: string;
+  path: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: opts.name,
+    serviceType: opts.serviceType,
+    description: opts.description,
+    url: `${SITE.url}${opts.path}`,
+    provider: { "@type": "LocalBusiness", "@id": BUSINESS_ID, name: SITE.name },
+    areaServed: ZONES.map((z) => ({ "@type": "City", name: z.name })),
+  };
+}
+
+/** Per-zone LocalBusiness node, linked to the canonical entity via @id. */
+export function zoneJsonLd(zone: Zone) {
+  const path = `/zones/${zone.slug}`;
+  const g = ZONE_GEO[zone.slug];
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": BUSINESS_ID,
+    name: SITE.name,
+    alternateName: SITE.tagline,
+    description: `Pisciniste à ${zone.name} : automatisation, entretien, dépannage et construction de piscine. ${zone.distance}.`,
+    image: `${SITE.url}/og-default.jpg`,
+    url: `${SITE.url}${path}`,
+    telephone: SITE.phone,
+    email: SITE.email,
+    priceRange: "$$",
+    address: POSTAL_ADDRESS,
+    ...(g ? { geo: { "@type": "GeoCoordinates", latitude: g.lat, longitude: g.lng } } : {}),
+    areaServed: [
+      { "@type": "City", name: zone.name },
+      ...zone.communes.map((c) => ({ "@type": "City", name: c })),
+    ],
+    openingHoursSpecification: OPENING_HOURS,
+    founder: { "@type": "Person", name: "Guillaume Risson" },
+    sameAs: SAME_AS,
+  };
+}
+
+export function faqJsonLd(items: Array<{ q: string; a: string }>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map(({ q, a }) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
+    })),
+  };
+}
+
+export function breadcrumbJsonLd(items: Array<{ name: string; path: string }>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((it, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: it.name,
+      item: `${SITE.url}${it.path}`,
+    })),
+  };
+}
+
+export function zoneTitle(name: string) {
+  return `Pisciniste à ${name} | Entretien & dépannage piscine`;
+}
+export function zoneDesc(name: string) {
+  return `Pisciniste à ${name} : automatisation, entretien et dépannage de piscine. Intervention rapide depuis Granges-de-Vesin. Devis gratuit.`;
 }

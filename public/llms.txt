@@ -1,27 +1,50 @@
 # Xx Works Sàrl
 
-> Pisciniste expert en Suisse romande, spécialisé en automatisation, entretien et dépannage de piscines privées. Basé à Granges-de-Vesin (Broye), interventions sur Estavayer-le-Lac, Payerne, Avenches, Morat, Yverdon-les-Bains, Lucens, Neuchâtel et Fribourg. Brevet fédéral, 15 ans d'expérience.
+> Pisciniste expert en Suisse romande, spécialisé en automatisation, entretien, dépannage et construction de piscines privées. Basé à Granges-de-Vesin (Broye, canton de Fribourg), interventions sur Estavayer-le-Lac, Payerne, Avenches, Morat, Yverdon-les-Bains, Lucens, Neuchâtel et Fribourg. Dirigé par Guillaume Risson, titulaire d'un brevet fédéral en technique de l'eau et fort de 15 ans d'expérience.
+
+## Identité et contact
+
+- Raison sociale : Xx Works Sàrl (sous-marque : Garden Technics)
+- Dirigeant : Guillaume Risson
+- Adresse : Route du Couchon 37, 1484 Granges-de-Vesin, Suisse
+- Téléphone : +41 78 258 53 58
+- Email : info@xxworks.ch
+- Site : https://pisciniste.xxworks.ch
+- Horaires : lundi à vendredi 8h–18h, samedi sur rendez-vous
+- Devis : gratuit, réponse sous 48h ouvrées
+- Tarification : sur devis ou à l'heure, en CHF
+
+## Différenciation
+
+- Brevet fédéral en technique de l'eau (formation professionnelle supérieure suisse) — rare chez les paysagistes généralistes.
+- Maîtrise simultanée de l'hydraulique, de la chimie de l'eau et de l'automatisation.
+- Structure indépendante : un seul interlocuteur (Guillaume), pas de centre d'appel ni de sous-traitance.
+- Positionnement qualité premium, pas low-cost.
+
+## Marques partenaires
+
+Bayrol (Poolmanager, régulation pH/Rx), Dryden Aqua (média filtrant AFM, supervision SPACE), Besgo (vannes multivoies), Badu / Speck (pompes à vitesse variable, contre-lavage), OSF (régulation et électronique), RivieraPool (coques polyester, inox, mini-piscines, spas).
 
 ## Services
 
-- [Construction & installation](/construction): Conception et installation de piscines neuves clé en main (maçonnerie, coque, inox RivieraPool).
-- [Automatisation piscine](/automatisation): Régulation pH/chlore, contre-lavage, suivi à distance, domotique (Bayrol, Dryden Aqua).
-- [Entretien piscine](/entretien): Mise en service, suivi saisonnier, hivernage, contrats annuels.
-- [Dépannage piscine](/depannage): Fuites, pompes, filtres, automatismes, chauffage. Intervention rapide.
-- [Équipements piscine](/equipements): Pompes à vitesse variable, filtres AFM, pompes à chaleur, couvertures, douches.
-- [Produits d'entretien](/produits): Chlore, brome, pH, floculants, anti-calcaire de qualité professionnelle.
+- [Construction & installation](/construction): piscines neuves clé en main — maçonnée, coque polyester RivieraPool, inox AISI 316L, mini-piscines et spas. Délai 3–16 semaines. Budget indicatif : 60 000–80 000 CHF (coque familiale équipée), 100 000–120 000 CHF (inox). Permis de construire requis dans la plupart des cas.
+- [Automatisation piscine](/automatisation): régulation pH/chlore, contre-lavage automatique, pompe à vitesse variable, suivi à distance, domotique. Budget indicatif : 2 500–8 000 CHF (régulation), +1 500–3 500 CHF (pompe à vitesse variable). Retour sur investissement moyen : 2 ans. Jusqu'à 70 % d'économie d'électricité et 40 % de produits.
+- [Entretien piscine](/entretien): mise en service de printemps, suivi hebdomadaire / bi-mensuel / mensuel, hivernage actif ou passif, contrats annuels. Fréquence recommandée pour une piscine familiale (40–70 m³) : suivi bi-mensuel.
+- [Dépannage piscine](/depannage): fuites, pompes, filtres, automatismes, chauffage, eau verte. Urgences traitées 7j/7, devis validé avant réparation. Recherche de fuite par pression différentielle et traçage.
+- [Équipements piscine](/equipements): pompes à vitesse variable Badu (durée de vie 8–12 ans), filtres AFM Dryden Aqua (filtration jusqu'à 1 µm), pompes à chaleur (dimensionnement 8–15 kW selon volume et couverture), couvertures et volets, douches de jardin.
+- [Produits d'entretien](/produits): chlore lent et choc, brome, oxygène actif, correcteurs pH/TAC, floculants, anti-calcaire, anti-algues — qualité professionnelle.
 
-## Zones desservies
+## Zones desservies (depuis Granges-de-Vesin)
 
-- [Estavayer-le-Lac](/zones/estavayer-le-lac)
-- [Payerne](/zones/payerne)
-- [Avenches](/zones/avenches)
-- [Morat](/zones/morat)
-- [Yverdon-les-Bains](/zones/yverdon-les-bains)
-- [Lucens](/zones/lucens)
-- [Neuchâtel](/zones/neuchatel)
-- [Fribourg](/zones/fribourg)
+- [Estavayer-le-Lac](/zones/estavayer-le-lac) — 7 km, lac de Neuchâtel, eau modérément dure.
+- [Payerne](/zones/payerne) — 10 km, plaine de la Broye, eau modérément calcaire.
+- [Avenches](/zones/avenches) — 17 km, lac de Morat, terrain et eau calcaires (> 30 °fH).
+- [Morat](/zones/morat) — 21 km, région bilingue, lac de Morat.
+- [Yverdon-les-Bains](/zones/yverdon-les-bains) — 30 km, eau très dure (> 35 °fH), ville thermale.
+- [Lucens](/zones/lucens) — 18 km, vallée de la Broye, eau de bonne qualité.
+- [Neuchâtel](/zones/neuchatel) — 35 km, eau douce, installations haut de gamme.
+- [Fribourg](/zones/fribourg) — 25 km, eau de la Sarine, terrain vallonné.
 
 ## Contact
 
-- [Contact](/contact): Demande de devis gratuit, téléphone +41 78 258 53 58, email info@xxworks.ch.
+- [Contact](/contact): demande de devis gratuit, téléphone +41 78 258 53 58, email info@xxworks.ch.
