@@ -25,7 +25,12 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
 
     setSubmitting(true);
     try {
-      const res = await fetch("/?no-cache=1", {
+      // Post to the STATIC detection file, not "/". The whole site is served by a
+      // catch-all Netlify SSR function (path: "/*"), which would intercept a POST to
+      // "/" and return a rendered page (200) without ever handing the submission to
+      // Netlify Forms. Posting to the static /__forms.html bypasses the SSR function
+      // so the Forms pipeline records it. See https://opennext.js.org/netlify/forms
+      const res = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body,
@@ -42,7 +47,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
     <form
       name="contact"
       method="POST"
-      action="/"
+      action="/__forms.html"
       data-netlify="true"
       netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
