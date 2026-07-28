@@ -13,6 +13,20 @@ export const SITE = {
   },
 };
 
+/**
+ * Absolute URL with a canonical trailing slash.
+ * Netlify serves every prerendered page at its directory form (`/automatisation/`)
+ * and 301-redirects the slash-less form. Canonical tags, og:url, the sitemap and
+ * JSON-LD must therefore point at the trailing-slash URL — otherwise every signal
+ * targets a redirecting URL, which Google treats as "Page with redirect" and won't
+ * index. Matches the project rule: URLs always end with a slash.
+ */
+export function absUrl(path: string) {
+  if (path === "/" || path === "") return `${SITE.url}/`;
+  const p = path.startsWith("/") ? path : `/${path}`;
+  return `${SITE.url}${p.endsWith("/") ? p : `${p}/`}`;
+}
+
 export const SERVICES = [
   { slug: "construction", title: "Construction & installation", short: "Conception et installation de piscines neuves clé en main." },
   { slug: "automatisation", title: "Automatisation", short: "Régulation, domotique et pilotage à distance de votre piscine." },
@@ -171,7 +185,7 @@ export function buildSeo(opts: {
   path: string;
   image?: string;
 }) {
-  const url = `${SITE.url}${opts.path}`;
+  const url = absUrl(opts.path);
   const image = opts.image ?? `${SITE.url}/og-default.jpg`;
   return [
     { title: opts.title },
@@ -194,7 +208,7 @@ export function buildSeo(opts: {
 }
 
 export function canonical(path: string) {
-  return [{ rel: "canonical", href: `${SITE.url}${path}` }];
+  return [{ rel: "canonical", href: absUrl(path) }];
 }
 
 // --- Structured data (schema.org JSON-LD) ---------------------------------
@@ -320,7 +334,7 @@ export function serviceJsonLd(opts: {
     name: opts.name,
     serviceType: opts.serviceType,
     description: opts.description,
-    url: `${SITE.url}${opts.path}`,
+    url: absUrl(opts.path),
     provider: { "@type": "LocalBusiness", "@id": BUSINESS_ID, name: SITE.name },
     areaServed: ZONES.map((z) => ({ "@type": "City", name: z.name })),
   };
@@ -338,7 +352,7 @@ export function zoneJsonLd(zone: Zone) {
     alternateName: SITE.tagline,
     description: `Pisciniste à ${zone.name} : automatisation, entretien, dépannage et construction de piscine. ${zone.distance}.`,
     image: `${SITE.url}/og-default.jpg`,
-    url: `${SITE.url}${path}`,
+    url: absUrl(path),
     telephone: SITE.phone,
     email: SITE.email,
     priceRange: "$$",
@@ -374,7 +388,7 @@ export function breadcrumbJsonLd(items: Array<{ name: string; path: string }>) {
       "@type": "ListItem",
       position: i + 1,
       name: it.name,
-      item: `${SITE.url}${it.path}`,
+      item: absUrl(it.path),
     })),
   };
 }

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SERVICES, ZONES, SITE } from "@/lib/site-data";
+import { SERVICES, ZONES, absUrl } from "@/lib/site-data";
 
 const paths = [
   "/",
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/sitemap.xml")({
 ${paths
   .map(
     (p) =>
-      `  <url><loc>${SITE.url}${p}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>${p === "/" ? "1.0" : "0.8"}</priority></url>`
+      `  <url><loc>${absUrl(p)}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>${p === "/" ? "1.0" : "0.8"}</priority></url>`
   )
   .join("\n")}
 </urlset>`;
