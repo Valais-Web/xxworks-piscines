@@ -33,12 +33,12 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
 
     setSubmitting(true);
     try {
-      // Post to the STATIC detection file, not "/". The whole site is served by a
-      // catch-all Netlify SSR function (path: "/*"), which would intercept a POST to
-      // "/" and return a rendered page (200) without ever handing the submission to
-      // Netlify Forms. Posting to the static /__forms.html bypasses the SSR function
-      // so the Forms pipeline records it. See https://opennext.js.org/netlify/forms
-      const res = await fetch("/__forms.html", {
+      // Post to the form's own page path. On this Netlify setup (SSR catch-all +
+      // preferStatic), Netlify Forms only intercepts a POST to a page that contains
+      // the detected form — verified: POST /contact/ -> 200 "Thank you!", while
+      // POST /__forms.html and POST / both return 404 (static asset / no interception).
+      // The trailing slash is required: /contact 301-redirects and would drop the POST.
+      const res = await fetch("/contact/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body,
@@ -84,7 +84,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
     <form
       name="contact"
       method="POST"
-      action="/__forms.html"
+      action="/contact/"
       data-netlify="true"
       netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
