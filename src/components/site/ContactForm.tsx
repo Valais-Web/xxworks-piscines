@@ -1,10 +1,18 @@
-import { Send } from "lucide-react";
+import { Send, CheckCircle2 } from "lucide-react";
 import { useId, useState, type FormEvent } from "react";
+import { SITE } from "@/lib/site-data";
+
+declare global {
+  interface Window {
+    dataLayer?: Array<Record<string, unknown>>;
+  }
+}
 
 export function ContactForm({ compact = false }: { compact?: boolean }) {
   const uid = useId();
   const id = (n: string) => `${uid}-${n}`;
   const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -36,11 +44,40 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
         body,
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      window.location.href = "/contact?success=1";
+      // Signal the successful submission to GTM (usable as a conversion trigger).
+      window.dataLayer?.push({ event: "contact_form_success" });
+      form.reset();
+      setSubmitting(false);
+      setSuccess(true);
     } catch (err) {
       setError("L'envoi a échoué. Merci de réessayer ou de nous appeler.");
       setSubmitting(false);
     }
+  }
+
+  if (success) {
+    return (
+      <div
+        role="status"
+        aria-live="polite"
+        className={`grid gap-3 text-center place-items-center ${
+          compact ? "" : "bg-card border rounded-2xl p-8 md:p-10 shadow-[0_12px_40px_rgba(0,0,0,0.08)]"
+        }`}
+      >
+        <CheckCircle2 className="h-12 w-12 text-primary" aria-hidden="true" />
+        <h3 className="text-xl font-semibold">Merci, votre demande a bien été envoyée.</h3>
+        <p className="text-sm text-muted-foreground max-w-md">
+          Nous revenons vers vous sous 48h ouvrées. Pour une urgence, appelez-nous au{" "}
+          <a href={SITE.phoneHref} className="text-primary underline hover:no-underline">
+            {SITE.phone}
+          </a>
+          .
+        </p>
+        <button type="button" onClick={() => setSuccess(false)} className="btn-outline mt-2">
+          Envoyer une autre demande
+        </button>
+      </div>
+    );
   }
 
   return (
