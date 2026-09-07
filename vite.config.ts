@@ -9,7 +9,7 @@ import netlify from "@netlify/vite-plugin-tanstack-start";
 // `vite build` to emit a Netlify Functions bundle for SSR and emulates the
 // Netlify platform locally during `vite dev`.
 export default defineConfig({
-  cloudflare: false,
+  nitro: false,
   plugins: [netlify()],
   tanstackStart: {
     server: { entry: "server" },
